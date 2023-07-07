@@ -15,6 +15,6 @@ class Essay(models.Model):
 
 class Comment(models.Model):
     comment_content = models.TextField(verbose_name='내용')
-    created_at = models.DateTimeField(verbose_name='작성일')
+    created_at = models.DateTimeField(verbose_name='작성일', auto_now_add=True)
     essay = models.ForeignKey(to='Essay', on_delete=models.CASCADE)
     writer = models.ForeignKey(to=User, on_delete=models.CASCADE, null=True, blank=True)
