@@ -113,14 +113,19 @@ def create_club(request):
     return render(request, 'club/create.html')
 
 # 독서 모임 신청
-def apply_club(request, club_id, user_id):
+def apply_club(request, club_id): # , user_id
     if request.method == 'POST':
         club = get_object_or_404(BookClub, id=club_id)
 
-        # 최대 멤버 수 초과하는지 확인 필요
-        # ...
+        # 최대 멤버 수 초과하는지 확인
+        if club.applied_members < club.max_members:
+            applied_members = request.POST.get('applied_members')
+            # 신청 멤버 수 update
+            club = BookClub.objects.update(
+                applied_members=applied_members+1
+            )
 
-        context = {'club_id': club.id}
-        return render(request, 'club/apply_success.html', context)
+            context = {'club_id': club.id}
+            return render(request, 'club/apply_success.html', context)
 
     return render(request, 'club/club_detail.html')
