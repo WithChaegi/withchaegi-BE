@@ -14,6 +14,7 @@ class BookClub(models.Model):
     city_location = models.CharField(verbose_name='장소(시/도)', max_length=10)
     district_location = models.CharField(verbose_name='장소(구/시/군)', max_length=10)
     dong_location = models.CharField(verbose_name='장소(동/읍/면)', max_length=10)
+    full_address = models.CharField(verbose_name='전체 주소', max_length=50)
     discussion_field = models.CharField(verbose_name='토론 분야', max_length=10)
     discussion_keywords = models.CharField(verbose_name='토론 키워드', max_length=10)
     min_members = models.IntegerField(verbose_name='최소 멤버수', default=1, validators=[MinValueValidator(1)])
