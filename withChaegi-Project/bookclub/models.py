@@ -9,6 +9,7 @@ class BookClub(models.Model):
     book_title = models.CharField(verbose_name='책 제목', max_length=30)
     book_author = models.CharField(verbose_name='지은이', max_length=10)
     regularity = models.BooleanField(verbose_name='정기/비정기', default=False) # True(정기)/False(비정기)
+    # date -> CharField OR DateTimeField() 사용 후 날짜 추출
     date = ArrayField(models.CharField(verbose_name='날짜', max_length=20), default=list)
     time = ArrayField(models.CharField(verbose_name='시간', max_length=20), default=list)
     city_location = models.CharField(verbose_name='장소(시/도)', max_length=10)

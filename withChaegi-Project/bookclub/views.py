@@ -1,10 +1,37 @@
 from django.shortcuts import render, get_object_or_404
 from .models import BookClub
+from django.db.models import F, Q
+
+q = Q()
+
+# 책분야, 인원, 장소, 일시별로 필터링 코드
+def filtering(request):
+    discussion_field = request.GET.getlist('discussion_field', None)
+    max_members = request.GET.get('max_members', None)
+    dong_location = request.GET.get('dong_location', None)
+    date = request.GET.get('date', None)
+    
+    # q = Q()
+
+    if discussion_field:
+        q &= Q(discussion_field = discussion_field) # 왼(필드명)=오(찾는값) # &=로 필터 추가
+    if max_members:
+        q &= Q(max_members = max_members)
+    if dong_location:
+        q &= Q(dong_location = dong_location)
+    if date:
+        q &= Q(date = date)
+    
+    clubs = BookClub.objects.filter(q)
+    return clubs
 
 # 전체 독서 모임 확인
 def entire_list(request):
     if request.method == 'GET':
-        clubs = BookClub.objects.all()
+        if q: # 필터링이 걸려있다면
+            clubs = filtering(request)
+        else:
+            clubs = BookClub.objects.all()
 
         club_list = []
         for club in clubs:
@@ -25,7 +52,10 @@ def entire_list(request):
 # 인기 독서 모임 확인
 def popular_list(request):
     if request.method == 'GET':
-        clubs = BookClub.objects.order_by('-likes') # likes 많은 순으로 정렬(내림차순)
+        if q: # 필터링이 걸려있다면
+            clubs = filtering(request)
+        else:
+            clubs = BookClub.objects.order_by('-likes') # likes 많은 순으로 정렬(내림차순)
 
         club_list = []
         for club in clubs:
@@ -119,10 +149,11 @@ def apply_club(request, club_id): # , user_id
 
         # 최대 멤버 수 초과하는지 확인
         if club.applied_members < club.max_members:
-            applied_members = request.POST.get('applied_members')
+            # applied_members = request.POST.get('applied_members')
             # 신청 멤버 수 update
             club = BookClub.objects.update(
-                applied_members=applied_members+1
+                # applied_members=applied_members+1
+                applied_members = F('applied_members') + 1 # DB 내에서 바로 업데이트하도록
             )
 
             context = {'club_id': club.id}
