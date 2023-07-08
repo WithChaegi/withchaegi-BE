@@ -14,5 +14,6 @@ class PostModelAdmin(admin.ModelAdmin):
     list_display = ('id', 'essay_title', 'writer', 'book_title', 'book_author', 'essay_content', 'created_at', 'view_count')
     #search_fields = ('book_title')
     inlines = [CommentInline]
+    readonly_fields = ('created_at', )
 
 # admin.site.register(Comment)

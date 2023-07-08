@@ -1,0 +1,25 @@
+{% extends 'base.html'%}
+{% block title %}인덱스{% endblock %}
+
+{% block content %}
+<h1>인덱스 화면</h1>
+<ul>
+    <li><a href="{% url 'essays:essay-list' %}">게시글 목록</a></li>
+</ul>
+{% endblock %}
+
+<!-- <!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index Page</title>
+</head>
+<body>
+    <h1>인덱스 화면</h1>
+    <ul>
+        <li><a href="{% url 'essays:essay-list' %}">게시글 목록></a></li>
+    </ul>
+</body>
+</html> -->
