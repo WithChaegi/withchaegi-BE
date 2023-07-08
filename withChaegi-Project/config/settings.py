@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'essays', # 커뮤니티
     'users', # 회원가입
     'accounts', # 로그인
+    'bookclub', # 독서모임
 ]
 
 MIDDLEWARE = [
