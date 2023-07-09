@@ -5,7 +5,7 @@ app_name = 'essays'
 
 urlpatterns = [
     path('', essay_list_view, name='essay-list'),
-    path('new/', essay_create_view),
+    path('create/', essay_create_view, name='essay-create'),
     path('<int:id>/', essay_detail_view),
     path('<int:id>/edit/', essay_update_view),
     path('<int:id>/delete/', essay_delete_view),

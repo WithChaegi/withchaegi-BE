@@ -3,4 +3,31 @@
 
 {% block content %}
 <h1>Essay 입력 화면</h1>
+<form action="{% url 'essays:essay-create' %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div>
+        <label for="id_essay_title">감상문 제목</label>
+        <textarea name="essay_title" id="id_essay_title"></textarea>
+    </div>
+    <div>
+        <label for="id_image">사진 첨부</label>
+        <input type="file" name="image" accept="image/" id="id_image">
+    </div>
+    <div>
+        <label for="id_bookTitle">책 제목</label>
+        <textarea name="bookTitle" id="id_bookTitle"></textarea>
+    </div>
+    <div>
+        <label for="id_bookAuthor">책 지은이</label>
+        <textarea name="bookAuthor" id="id_bookAuthor"></textarea>
+    </div>
+    <div>
+        <label for="id_content">상세 내용</label>
+        <textarea name="content" id="id_content" cols="30" rows="10"></textarea>
+    </div>
+    <div>
+        <input type="submit">
+    </div>
+
+</form>
 {% endblock %}
