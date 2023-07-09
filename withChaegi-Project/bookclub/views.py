@@ -1,6 +1,9 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404
+from django.http import HttpResponse
 from .models import BookClub
+from .forms import BookClubBaseForm, BookClubCreateForm
 from django.db.models import F, Q
+import simplejson as json
 
 q = Q()
 
@@ -75,9 +78,9 @@ def popular_list(request):
         return render(request, 'club/popular_list.html', context)
 
 # 특정 독서 모임 확인
-def club_detail(request, club_id):
+def club_detail(request, pk):
     if request.method == 'GET':
-        club = get_object_or_404(BookClub, id=club_id)
+        club = get_object_or_404(BookClub, id=pk)
 
         club_data = {
             'group_name': club.group_name,
@@ -105,58 +108,72 @@ def club_detail(request, club_id):
 # 독서모임 생성
 def create_club(request):
     if request.method == 'POST':
-        group_name = request.POST.get('group_name')
-        book_photo = request.POST.get('book_photo')
-        book_title = request.POST.get('book_title')
-        book_author = request.POST.get('book_author')
-        date = request.POST.get('date')
-        time = request.POST.get('time')
-        city_location = request.POST.get('city_location')
-        district_location = request.POST.get('district_location')
-        dong_location = request.POST.get('dong_location')
-        discussion_field = request.POST.get('discussion_field')
-        discussion_keywords = request.POST.get('discussion_keywords')
-        min_members = request.POST.get('min_members')
-        max_members = request.POST.get('max_members')
-        details = request.POST.get('details')
+        form = BookClubBaseForm(request.POST, request.FILES)
 
-        club = BookClub.objects.create(
-            group_name=group_name,
-            book_photo=book_photo,
-            book_title=book_title,
-            book_author=book_author,
-            date=date,
-            time=time,
-            city_location=city_location,
-            district_location=district_location,
-            dong_location=dong_location,
-            discussion_field=discussion_field,
-            discussion_keywords=discussion_keywords,
-            min_members=min_members,
-            max_members=max_members,
-            details=details
-        )
+        if form.is_valid():
+            date_values = form.cleaned_data['date']
+            # date_strings = [date.strftime('%Y-%m-%d') for date in date_values]
+            date_strings = [date for date in date_values]
+            time_values = form.cleaned_data['time']
+            # time_strings = [time.strftime('%H:%M:%S') for time in time_values]
+            time_strings = [time for time in time_values]
+            book_club = BookClub.objects.create(
+                group_name = form.cleaned_data['group_name'],
+                book_photo = form.cleaned_data['book_photo'],
+                book_title = form.cleaned_data['book_title'],
+                book_author = form.cleaned_data['book_author'],
+                regularity = form.cleaned_data['regularity'],
+                # date = form.cleaned_data['date'],
+                # date = date_strings,
+                # time = form.cleaned_data['time'],
+                # time = time_strings,
+                city_location = form.cleaned_data['city_location'],
+                district_location = form.cleaned_data['district_location'],
+                dong_location = form.cleaned_data['dong_location'],
+                discussion_field = form.cleaned_data['discussion_field'],
+                discussion_keywords = form.cleaned_data['discussion_keywords'],
+                min_members = form.cleaned_data['min_members'],
+                max_members = form.cleaned_data['max_members'],
+                details = form.cleaned_data['details']
+            )
 
-        context = {'club_id': club.id}
-        return render(request, 'club/create_success.html', context)
+            # for date_string, time_string in zip(date_strings, time_strings):
+            #     book_club.date.append(date_string)
+            #     book_club.time.append(time_string)
+            # book_club.date = date_strings
+            # book_club.time = time_strings
+            book_club.date = json.dumps(date_strings)
+            book_club.time = json.dumps(time_strings)
 
-    return render(request, 'club/create.html')
+            book_club.save()
+
+            context = {'club_id': BookClub.id}
+            return render(request, 'club/entire_list.html', context)
+    else:
+        form = BookClubBaseForm()
+    # return HttpResponse("Invalid form data or request method.")
+    return render(request, 'club/create.html', {'form': form})
 
 # 독서 모임 신청
-def apply_club(request, club_id): # , user_id
-    if request.method == 'POST':
-        club = get_object_or_404(BookClub, id=club_id)
+def apply_club(request, pk): # , user_id
+    if request.method == 'GET':
+        club = get_object_or_404(BookClub, id=pk)
 
         # 최대 멤버 수 초과하는지 확인
         if club.applied_members < club.max_members:
             # applied_members = request.POST.get('applied_members')
             # 신청 멤버 수 update
-            club = BookClub.objects.update(
-                # applied_members=applied_members+1
-                applied_members = F('applied_members') + 1 # DB 내에서 바로 업데이트하도록
-            )
+            # club = BookClub.objects.update(
+            #     # applied_members=applied_members+1
+            #     applied_members = F('applied_members') + 1 # DB 내에서 바로 업데이트하도록
+            # )
+            # club.applied_members += 1
+            club.applied_members = F('applied_members') + 1
+            club.save()
 
             context = {'club_id': club.id}
-            return render(request, 'club/apply_success.html', context)
+            return render(request, 'club/entire_list.html', context)
+            # return redirect('/club/entire_list')
 
     return render(request, 'club/club_detail.html')
+    # return redirect('/club/entire_list')
