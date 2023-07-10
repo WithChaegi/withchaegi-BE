@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path, include
-from essays.views import index, url_view, url_parameter_view, function_view, class_view
+from essays.views import main, url_view, url_parameter_view, function_view, class_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -11,7 +11,7 @@ urlpatterns = [
     path('fbv/', function_view),
     path('cbv/', class_view.as_view()),
 
-    path('', index, name='index'),
+    path('main/', main, name='main'),
     path('community/', include('essays.urls', namespace='essays')),
 
     path('__debug__/', include('debug_toolbar.urls')),

@@ -5,8 +5,8 @@ from django.contrib.auth.decorators import login_required
 
 from .models import Essay
 
-def index(request):
-    return render(request, 'index.html')
+def main(request):
+    return render(request, 'main.html')
 
 def essay_list_view(request):
     # essay_list = Essay.objects.all() # Essay 전체 데이터 조회
@@ -21,7 +21,7 @@ def essay_detail_view(request, id):
     try:
         essay = Essay.objects.get(id=id)
     except Essay.DoesNotExist:
-        return redirect('index')
+        return redirect('main')
 
     context = {
         'essay' : essay
@@ -49,7 +49,7 @@ def essay_create_view(request):
             essay_content=essay_content,
             writer=request.user
         )
-        return redirect('index')
+        return redirect('main')
 
 def essay_update_view(request, id):
     return render(request, 'essays/essay_form.html')
