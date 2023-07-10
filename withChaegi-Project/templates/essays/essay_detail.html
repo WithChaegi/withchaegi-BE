@@ -1,5 +1,5 @@
-<!-- {% include "essays/header.html" %}
-{% load static %} -->
+{% include "essays/header.html" %}
+{% load static %}
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -7,71 +7,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>채기랑</title>
     <link rel="stylesheet" href="/static/css/post.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
-
+    <link rel="stylesheet" href="/static/css/header.css">
+    <link rel="stylesheet" href="/static/css/footer.css">
+    <script src="/static/js/includeHTML.js"></script>
 </head>
 
 <body>
-    <div id="container">
-        <div id="top">
-            <div class="top-left">채기랑</div>
-            <div class="top-right">
-                <div>마이 페이지</div>
-                <div>로그인</div>
-                <div>글 작성하기</div>
-            </div>
-        </div>
-        
-        <div id="review-box"></div>
-        <img id="review-img" src="/static/img/img3/post1.png">
-        <div id="review-text1">2023 끄적임 도서 원작 드라마 파친코 후기</div>
-        <div id="review-text2">파친코 / 이민진</div>
-        <img id="review-user" src="/static/img/img3/user.png">
-        <div id="review-text3">소독이</div>
-        <div id="review-text4">2023.05.18</div>
-        <div id="review-text5">계층, 차별, 결핍의 시대를 들여다보다가 돌연 마음이 먹먹해지는 소설.
-            파친코를 읽으면서 그때 그 작품들을 읽을 때와 비슷한 감정을 느꼈습니다. 이 감정은 치열하다 못해 끈적하게 열악한 현실을 드러내는 책을 읽을 때 주로 떠오릅니다. 좋은 소설은 열악한 시대 상황을
-            때론 사실적으로 표현하기도 하고, 때론 인물의 삶에 듬뿍 적셔
-            책을 읽어 보면 일제강점기 시절 어촌에 살던 소시민의 삶을 고스란히 들여다볼 수 있습니다. 특히 여성의 삶과 설움, 고통, 사람들의 사고방식, 남성주의적 문화가 생생하게 와닿습니다. 또한 그
-            시절 일본으로 이주해 살아가던 재일교포 디아스포라의 모습도 직관적으로 다가옵니다. 파친코는 시대상을 인물에 삶에 담아 전달하는 방법을 사용하기도 하지만, 비교적 노골적으로 그 모습을 드러낸다고
-            생각합니다. 이 책에 표현된 사건들이 사실인지 아닌지를 떠나서, 그 속에 인물들의 생각과 삶이 현실을 반영한다는 것을 전제로 그 시절을 상상하면 마음이 먹먹해집니다. 이 기분은 TV 화면 너머로
-            유니세프 광고를 볼 때 드는 기분과 비슷합니다. 특히 파친코는 일본인과 조선인의 계층 관계, 그리고 남자와 여자의 계층 관계를 통해 조선인 여자의 삶의 비극을 더 처절하게 드러내고 있습니다.
-        </div>
-        <div id="gochat"></div>
-        <div id="gochat-text">해당 게시글 작성자와 독서 채팅하러 가기</div>
-        <div id="comment">댓글</div>
-        <img id="cuser1" src="/static/img/img3/user2.png">
-        <img id="cuser2" src="/static/img/img3/user2.png">
-        <img id="cuser3" src="/static/img/img3/user2.png">
-        <div id="cbox1"></div>
-        <div id="cbox2"></div>
-        <div id="cbox3"></div>
-        <div id="creator1">고막</div>
-        <div id="creator2">알파카</div>
-        <div id="date1">2023.05.18</div>
-        <div id="date2">2023.05.18</div>
-        <div id="cbtn1">등록</div>
-        <div id="cbtn2">대화하러 가기</div>
-        <div id="cbtn3">대화하러 가기</div>
-        <div id="ctext1">해당 게시물에 대한 00님의 생각을 적어주세요. 책에 대해 서로의 생각을 주고받는 건
-            곧 나의 세계를 확장하는 거니까요!</div>
-        <div id="ctext2">저도 파친코 읽고 삶의 태도에 대해서 다시 재정립해볼 수 있는 기회여서 너무 유익했던 책이었던 것
-            같습니다. 삶은 지속됩니다. 삶은 끔찍하고도 고통스럽지만 언젠간 돌아볼 때 위로가 되는 것이 삶인
-            것 같아요.</div>
-        <div id="ctext3">타국에서 살아가는 재외동포들의 삶의 애환이 잘 느껴져서 읽는 내내 슬픈 마음이었습니다. </div>
-        <footer id="post-footer">
-            <div class="footer-t1">채기량</div>
-            <div class="footer-t2">회사소개 | 서비스 가이드 | 개인정보보호정책 | 이용약관</div>
-            <div class="footer-t3">
-                <a href="#"><img width="47" height="47" src="/static/img/img3/instagram.png"></a>
-                <a href="#"><img width="47" height="47" src="/static/img/img3/facebook.png"></a>
-                <a href="#"><img width="47" height="47" src="/static/img/img3/twitter.png"></a>
-            </div>
-        </footer>
+    <!-- <div include-html="header.html"></div> -->
+    <div id="review-box"></div>
+    <img id="review-img" src="/static/img/img3/post1.png">
+    <div id="review-text1">2023 끄적임 도서 원작 드라마 파친코 후기</div>
+    <div id="review-text2">파친코 / 이민진</div>
+    <img id="review-user" src="/static/img/img3/user.png">
+    <div id="review-text3">소독이</div>
+    <div id="review-text4">2023.05.18</div>
+    <div id="review-text5">계층, 차별, 결핍의 시대를 들여다보다가 돌연 마음이 먹먹해지는 소설.
+        파친코를 읽으면서 그때 그 작품들을 읽을 때와 비슷한 감정을 느꼈습니다. 이 감정은 치열하다 못해 끈적하게 열악한 현실을 드러내는 책을 읽을 때 주로 떠오릅니다. 좋은 소설은 열악한 시대 상황을
+        때론 사실적으로 표현하기도 하고, 때론 인물의 삶에 듬뿍 적셔
+        책을 읽어 보면 일제강점기 시절 어촌에 살던 소시민의 삶을 고스란히 들여다볼 수 있습니다. 특히 여성의 삶과 설움, 고통, 사람들의 사고방식, 남성주의적 문화가 생생하게 와닿습니다. 또한 그
+        시절 일본으로 이주해 살아가던 재일교포 디아스포라의 모습도 직관적으로 다가옵니다. 파친코는 시대상을 인물에 삶에 담아 전달하는 방법을 사용하기도 하지만, 비교적 노골적으로 그 모습을 드러낸다고
+        생각합니다. 이 책에 표현된 사건들이 사실인지 아닌지를 떠나서, 그 속에 인물들의 생각과 삶이 현실을 반영한다는 것을 전제로 그 시절을 상상하면 마음이 먹먹해집니다. 이 기분은 TV 화면 너머로
+        유니세프 광고를 볼 때 드는 기분과 비슷합니다. 특히 파친코는 일본인과 조선인의 계층 관계, 그리고 남자와 여자의 계층 관계를 통해 조선인 여자의 삶의 비극을 더 처절하게 드러내고 있습니다.
     </div>
+    
+    
+    <div id="comment">댓글</div>
+    <img id="cuser1" src="/static/img/img3/user2.png">
+    <img id="cuser2" src="/static/img/img3/user2.png">
+    <img id="cuser3" src="/static/img/img3/user2.png">
+    <div id="cbox1"></div>
+    <div id="cbox2"></div>
+    <div id="cbox3"></div>
+    <div id="creator1">고막</div>
+    <div id="creator2">알파카</div>
+    <div id="date1">2023.05.18</div>
+    <div id="date2">2023.05.18</div>
+    <div id="cbtn1">등록</div>
+    <div id="ctext1">해당 게시물에 대한 00님의 생각을 적어주세요. 책에 대해 서로의 생각을 주고받는 건
+        곧 나의 세계를 확장하는 거니까요!</div>
+    <div id="ctext2">저도 파친코 읽고 삶의 태도에 대해서 다시 재정립해볼 수 있는 기회여서 너무 유익했던 책이었던 것
+        같습니다. 삶은 지속됩니다. 삶은 끔찍하고도 고통스럽지만 언젠간 돌아볼 때 위로가 되는 것이 삶인
+        것 같아요.</div>
+    <div id="ctext3">타국에서 살아가는 재외동포들의 삶의 애환이 잘 느껴져서 읽는 내내 슬픈 마음이었습니다. </div>
+    
+    <script>
+        includeHTML();
+    </script>
 </body>
-
 </html>
-<!-- {% include "essays/footer.html" %} -->
+
+{% include "essays/footer.html" %}
