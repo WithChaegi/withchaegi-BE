@@ -170,16 +170,4 @@ body{
 }
 
 
-#div3Btn #submit{
-    transition: all 0.3s ease 0s;
-    cursor: pointer;
-}
-#div3Btn #submit:hover {
-    box-shadow: 0px 10px 20px #f882035a;
-    transform: translateY(-3px);
-}
-#div3Btn #submit:active {
-    background-color: #F88103;
-    box-shadow: 0px 10px 20px #f882035a;
-    transform: translateY(-3px);
 }

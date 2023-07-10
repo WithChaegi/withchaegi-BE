@@ -75,11 +75,6 @@ body{
 #divBooksH{
     display: flex;
     flex-direction: row;
-    position: relative;
-    width: 60vw;
-    margin: 0 auto;
-    justify-content: space-between;
-    margin-bottom: 5vh;
 }
 
 #divBooksH > .divOneBook{
@@ -112,7 +107,6 @@ body{
     text-overflow: ellipsis;
     white-space: nowrap;
     word-break:break-all;
-    margin-bottom: 10px;
 }
 #divBooksH > .divOneBook #divPlaceDate{
     display: flex;

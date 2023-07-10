@@ -129,7 +129,6 @@ body{
 #divBooksH > .divOneBook #title{
     font-size: 1rem;
     font-weight: 700;
-    margin-bottom: 10px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;

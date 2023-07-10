@@ -9,8 +9,8 @@ def index(request):
     return render(request, 'index.html')
 
 def essay_list_view(request):
-    essay_list = Essay.objects.all() # Essay 전체 데이터 조회
-    # essay_list = Essay.objects.all().order_by('-created_at') # 최신순 정렬
+    # essay_list = Essay.objects.all() # Essay 전체 데이터 조회
+    essay_list = Essay.objects.all().order_by('-created_at') # 최신순 정렬
     # essay_list = Essay.objects.all().order_by('-essay_likes') # 인기순 정렬
     context = {
         'essay_list' : essay_list
@@ -18,7 +18,15 @@ def essay_list_view(request):
     return render(request, 'essays/essay_list.html', context)
 
 def essay_detail_view(request, id):
-    return render(request, 'essays/essay_detail.html')
+    try:
+        essay = Essay.objects.get(id=id)
+    except Essay.DoesNotExist:
+        return redirect('index')
+
+    context = {
+        'essay' : essay
+    }
+    return render(request, 'essays/essay_detail.html', context)
 
 @login_required
 def essay_create_view(request):
