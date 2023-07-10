@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -42,6 +43,7 @@ INSTALLED_APPS = [
     'essays', # 커뮤니티
     'users', # 회원가입
     'accounts', # 로그인
+    'bookclub', # 독서모임
     'debug_toolbar',
 ]
 

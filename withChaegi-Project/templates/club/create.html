@@ -1,0 +1,15 @@
+{% extends 'base2.html' %}
+{% block title %}독서모임 생성하기{% endblock %}
+
+{% block content %}
+<h1>독서모임 생성</h1>
+<form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div>
+            {{ form.as_p }}
+    </div>
+    <div>
+        <input type="submit">
+    </div>
+</form>
+{% endblock %}

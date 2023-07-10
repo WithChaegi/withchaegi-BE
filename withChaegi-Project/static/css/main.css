@@ -79,9 +79,6 @@ body{
     text-align: center;
     word-break: keep-all;
 }
-#divBanner > div:hover{
-    cursor: pointer;
-}
 
 #sec2{
     align-self: center;
@@ -132,7 +129,6 @@ body{
 #divBooksH > .divOneBook #title{
     font-size: 1rem;
     font-weight: 700;
-    flex-grow: 0.5;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
