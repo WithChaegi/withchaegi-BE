@@ -9,7 +9,13 @@ def index(request):
     return render(request, 'index.html')
 
 def essay_list_view(request):
-    return render(request, 'essays/essay_list.html')
+    essay_list = Essay.objects.all() # Essay 전체 데이터 조회
+    # essay_list = Essay.objects.all().order_by('-created_at') # 최신순 정렬
+    # essay_list = Essay.objects.all().order_by('-essay_likes') # 인기순 정렬
+    context = {
+        'essay_list' : essay_list
+    }
+    return render(request, 'essays/essay_list.html', context)
 
 def essay_detail_view(request, id):
     return render(request, 'essays/essay_detail.html')

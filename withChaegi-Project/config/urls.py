@@ -14,6 +14,9 @@ urlpatterns = [
     path('', index, name='index'),
     path('community/', include('essays.urls', namespace='essays')),
 
+    path('__debug__/', include('debug_toolbar.urls')),
+
+
     path('accounts/', include('accounts.urls', namespace='accounts'))
 ]
 

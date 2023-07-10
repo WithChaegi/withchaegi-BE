@@ -1,0 +1,37 @@
+{% load static %}
+<div class="card">
+    <div class="card_header">
+        {% if essay.book_photo %}
+            <img src="{{ essay.book_photo.url }}" alt="책 사진">
+        {% else %}
+        <img src="http://via.placeholder.com/64x100" alt="책 사진">
+        {% endif %}
+        <a hrdf="#">
+            <span class="card_user-name">{{ essay.username }}</span><br>{{"2023 끄적임 도서 원작 드라마 파친코 후기"|truncatechars:35}}
+            
+        </a>
+    </div>
+    <div class="card_body">
+        <div>
+            <!-- <img class="card_image" src="http://via.placeholder.com/300x300" alt=""> -->
+        </div>
+        
+        <div class="card_content">
+            <!-- <span class="card_like-num">좋아요 00개</span> -->
+            <div class="card_main-text">
+                
+                <p>계층, 차별, 결핍의 시대를 들여다보다가 돌연 마음이 먹먹해지는 소설.
+                    파친코를 읽으면서 그때 그 작품들을 읽을 때와 비슷한 감정을 느꼈습니다. 이 감정은 치열하다 못해 끈적하게 열악한 현실을 드러내는 책을 읽을 때 주로 떠오릅니다. 좋은 소설은 열악한 시대 상황을 때론 사실적으로 표현하기도 하고, 때론 인물의 삶에 듬뿍 적셔
+                    책을 읽어 보면 일제강점기 시절 어촌에 살던 소시민의 삶을 고스란히 들여다볼 수 있습니다. 특히 여성의 삶과 설움, 고통, 사람들의 사고방식, 남성주의적 문화가 생생하게 와닿습니다. 또한 그 시절 일본으로 이주해 살아가던 재일교포 디아스포라의 모습도 직관적으로 다가옵니다. 파친코는 시대상을 인물에 삶에 담아 전달하는 방법을 사용하기도 하지만, 비교적 노골적으로 그 모습을 드러낸다고 생각합니다. 이 책에 표현된 사건들이 사실인지 아닌지를 떠나서, 그 속에 인물들의 생각과 삶이 현실을 반영한다는 것을 전제로 그 시절을 상상하면 마음이 먹먹해집니다. 이 기분은 TV 화면 너머로 유니세프 광고를 볼 때 드는 기분과 비슷합니다. 특히 파친코는 일본인과 조선인의 계층 관계, 그리고 남자와 여자의 계층 관계를 통해 조선인 여자의 삶의 비극을 더 처절하게 드러내고 있습니다.</p>
+            </div>
+        </div>
+        <div class="card_btn-group">
+            <img class="card_btn" src="{% static 'icons/favorite_outlined_black_36dp.svg' %}" alt=""}>
+            <img class="card_btn" src="{% static 'icons/mode_comment_outlined_black_36dp.svg' %}" alt=""}>
+        </div>
+        <div class="card_comment-username">
+            <p><span class="card_user-name">csy.official</span></p>
+            <p>댓글 내용...</p>
+        </div>
+    </div>
+</div>

@@ -11,6 +11,7 @@ class Essay(models.Model):
     essay_content = models.TextField(verbose_name='상세 내용')
     created_at = models.DateTimeField(verbose_name='작성일', auto_now_add=True)
     view_count = models.IntegerField(verbose_name='조회수', default=0)
+    # essay_likes = models.IntegerField(verbose_name='좋아요', default=0)
     writer = models.ForeignKey(to=User, on_delete=models.CASCADE, null=True, blank=True)
 
 class Comment(models.Model):
