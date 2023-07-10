@@ -17,7 +17,8 @@ urlpatterns = [
     path('__debug__/', include('debug_toolbar.urls')),
 
 
-    path('accounts/', include('accounts.urls', namespace='accounts'))
+    path('accounts/', include('accounts.urls', namespace='accounts')),
+    path('club/', include('bookclub.urls', namespace='bookclub'))
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

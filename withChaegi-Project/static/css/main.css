@@ -1,0 +1,257 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Roboto&display=swap');
+
+html{
+    font-size:62.5%;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+div,p,input{
+    margin: 0;
+    padding: 0;
+}
+a{
+    text-decoration: none;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+}
+
+#sec1{
+    display: flex;
+    flex-direction: column;
+    background-color: #F8F8F8;
+}
+
+#divSearch{
+    position: relative;
+    display: flex;
+    width: 40vw;
+    align-self: center;
+    justify-content: center;
+    align-items: center;
+    margin: 2.5vh;
+}
+#divSearch > input{
+    width: 40vw;
+    height: 7vh;
+    border: 2px solid #2D4A91;
+    border-radius: 22px;
+    padding: 0 1vw 0 1vw;
+}:focus{
+    outline: none;
+}
+#divSearch > img{
+    position: absolute;
+    width: 24px;
+    right: 1.1vw;
+}
+
+
+.cWidth{
+    width: 65vw;
+    min-width: 650px;
+    align-self: center;
+}
+
+#divBanner{
+    position: relative;
+}
+#divBanner > p{
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 160%;
+    margin-top: 6.5vh;
+}
+#divBanner > div{
+    width: 15%;
+    height: 6vh;
+    background-color: #F88103;
+    margin-top: 7vh;
+    margin-bottom: 8vh;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    line-height: 6vh;
+    text-align: center;
+    word-break: keep-all;
+}
+
+#sec2{
+    align-self: center;
+    padding-top: 10vh;
+    padding-bottom: 8vh;
+}
+
+#pMore{
+    color: #838282;
+    font-size: 1.4rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+#divBooksH{
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    width: 60vw;
+    margin: 0 auto;
+    justify-content: space-between;
+}
+
+#divBooksH > .divOneBook{
+    display: flex;
+    flex-direction: column;
+    width: 14vw;
+    height: 21vw;
+    min-width: 200px;
+    min-height: 280px;
+    border-radius: 12px;
+    background: rgba(255, 251, 251, 0.20);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+}
+#divBooksH > .divOneBook > img{
+    height: 16vw;
+    min-height: 210px;
+    border-radius: 12px;
+}
+#divBooksH > .divOneBook > div{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    flex-grow: 1;
+    padding: 6px 10px 6px 10px;
+}
+#divBooksH > .divOneBook #title{
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-break:break-all;
+}
+#divBooksH > .divOneBook #divPlaceDate{
+    display: flex;
+    flex-direction: row;
+}
+#divPlaceDate #date{
+    margin-left: 5px;
+}
+#divPlaceDate > div{
+    background-color: #001853;
+    border-radius: 8px;
+    color: white;
+    font-size: 0.8rem;
+    font-weight: 500;
+    padding: 3px;
+}
+#divBooksH > .divOneBook #info{
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+#sec3{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-image: url('/static/img/background-main.svg');
+    background-repeat : no-repeat;
+    background-size : cover;
+    padding-top: 8vh;
+}
+
+#divBooksV{
+    display: flex;
+    flex-direction: column;
+    width: 60vw;
+    margin: 0 auto;
+    justify-content: space-between;
+    margin-bottom: 10vh;
+}
+#divBooksV > .divOneBook{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    min-width: 600px;
+    height: 16vw;
+    min-height: 210px;
+    border-radius: 24px;
+    background: rgba(255, 251, 251, 0.20);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    margin-bottom: 2vh;
+}
+#divBooksV > .divOneBook > img{
+    width: 14vw;
+    min-width: 200px;
+    border-radius: 12px;
+}
+#divBooksV > .divOneBook > div{
+    display: flex;
+    flex-direction: column;
+    padding: 0 3vw 20px 3vw;
+}
+
+#divIdDate{
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+    margin-top: 3vh;
+    margin-bottom: 2.5vh;
+}
+#divIdDate > #id{
+    font-size: 1.6rem;
+    font-weight: 700;
+}
+#divIdDate > #date{
+    font-size: 1.2rem;
+    color: #A5A5A5;
+    font-weight: 500;
+    margin-left: 5px;
+}
+#divBooksV > .divOneBook #title{
+    min-width: 370px;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1.4vh;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-break:break-all;
+}
+#divBooksV > .divOneBook #content{
+    min-width: 370px;
+    flex-grow: 1;
+    font-size: 1.2rem;
+    font-weight: 400;
+    margin-bottom: 10px;
+    white-space: normal;
+    word-break: break-all;
+}
+
+#divLikeReply{
+    min-width: 370px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+#divLikeReply > div{
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+}
+#divLikeReply img{
+    width: 16px;
+    margin-right: 3px;
+}
+#divLikeReply{
+    font-size: 1rem;
+}
+#divLikeReply strong{
+    font-size: 1.2rem;
+    margin-left: 3.5px;
+    margin-right: 20px;
+}

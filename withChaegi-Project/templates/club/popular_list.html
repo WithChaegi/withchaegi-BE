@@ -1,0 +1,17 @@
+{% extends 'base2.html' %}
+{% block title %}독서모임 인기 리스트{% endblock %}
+
+{% block content %}
+<h1>독서모임 인기 리스트</h1>
+{% for club in clubs %}
+    <div>
+        {{club.group_name}}<br>
+        {{club.book_photo}}<br>
+        {{club.book_title}}<br>
+        {{club.district_location}}<br>
+        {{club.date}}<br>
+        {{club.time}}<br>
+        <br>
+    </div>
+{% endfor %}
+{% endblock %}
