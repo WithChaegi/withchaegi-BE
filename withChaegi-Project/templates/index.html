@@ -1,0 +1,67 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block title %}홈{% endblock %}
+
+{% block content %}
+<!-- <h1>인덱스 화면</h1>
+<ul>
+    <li><a href="{% url 'essays:essay-list' %}">게시글 목록</a></li>
+</ul> -->
+<main>
+    <div class="card-list">
+        <!-- {% for essay in essay_list %}
+            {% include 'mixin/essays/essay_card.html' %}
+        {% endfor %} -->
+        <div class="card">
+            <div class="card_header">
+                {% if essay.book_photo %}
+                    <img src="{{ essay.book_photo.url }}" alt="책 사진">
+                {% else %}
+                <img src="http://via.placeholder.com/64x100" alt="책 사진">
+                {% endif %}
+                <a hrdf="#">
+                    <span class="card_user-name">{{ essay.username }}</span><br>{{"2023 끄적임 도서 원작 드라마 파친코 후기"|truncatechars:35}}
+                    
+                </a>
+            </div>
+            <div class="card_body">
+                <div>
+                    <!-- <img class="card_image" src="http://via.placeholder.com/300x300" alt=""> -->
+                </div>
+                
+                <div class="card_content">
+                    <!-- <span class="card_like-num">좋아요 00개</span> -->
+                    <div class="card_main-text">
+                        
+                        <p>{{ essay.essay_content }}</p>
+                    </div>
+                </div>
+                <div class="card_btn-group">
+                    <img class="card_btn" src="{% static 'icons/favorite_outlined_black_36dp.svg' %}" alt=""}>
+                    <img class="card_btn" src="{% static 'icons/mode_comment_outlined_black_36dp.svg' %}" alt=""}>
+                </div>
+                <div class="card_comment-username">
+                    <p><span class="card_user-name">csy.official</span></p>
+                    <p>댓글 내용...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}
+
+<!-- <!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index Page</title>
+</head>
+<body>
+    <h1>인덱스 화면</h1>
+    <ul>
+        <li><a href="{% url 'essays:essay-list' %}">게시글 목록></a></li>
+    </ul>
+</body>
+</html> -->

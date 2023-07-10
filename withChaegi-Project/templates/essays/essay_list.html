@@ -1,0 +1,18 @@
+{% extends 'base.html'%}
+{% block title %}글 목록{% endblock %}
+
+{% block content %}
+<h1>Essay 목록 화면</h1>
+<!-- {{ essay_list }} -->
+
+{% for essay in essay_list %}
+    <div>
+        {{ essay.essay_title }}<br/>
+        {{ essay.book_photo }}<br/>
+        {{ essay.book_title }}<br/>
+        {{ essay.book_author }}<br/>
+        {{ essay.essay_content }}<br/><br/>
+        <!-- {{ essay.created_at }} -->
+    </div>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="/fbv/">새로고침</a><br>
+
+    <form action="" method="GET">
+        <input type="text" name="var">
+        <input type="submit" value="GET 제출">
+    </form>
+
+    <form action="" method="POST"> {% csrf_token %}
+        <input type="text" name="var">
+        <input type="submit" value="POST 제출">
+    </form>
+    
+</body>
+</html>
