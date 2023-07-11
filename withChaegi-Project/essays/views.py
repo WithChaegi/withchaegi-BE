@@ -4,6 +4,7 @@ from django.views.generic.list import ListView
 from django.contrib.auth.decorators import login_required
 
 from .models import Essay
+from .models import Comment
 
 def main(request):
     return render(request, 'main.html')
@@ -38,9 +39,11 @@ def essay_detail_view(request, id):
         essay = Essay.objects.get(id=id)
     except Essay.DoesNotExist:
         return redirect('main')
-
+    # comment_list = Comment.objects.all().order_by('-created_at') # 최신순 정렬
+    comment = Comment.objects.all().get(id=id)
     context = {
-        'essay' : essay
+        'essay' : essay,
+        'comment' : comment
     }
     return render(request, 'essays/essay_detail.html', context)
 
@@ -67,7 +70,7 @@ def essay_create_view(request):
         )
         return redirect('main')
 
-def essay_update_view(request, id):
+def essay_update_view(request, id): # 수정 기능인데 사용X
     return render(request, 'essays/essay_form.html')
 
 def essay_delete_view(request, id):
