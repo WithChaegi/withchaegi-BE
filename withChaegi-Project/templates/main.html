@@ -81,9 +81,12 @@
         <div class="cWidth">
             <div style="display: flex; flex-direction: row; justify-content: space-between; align-items: baseline; margin-bottom: 3vh;">
                 <p style="font-weight: 700; font-size: 2.4rem; margin-top: 5vh;">현재 인기 있는 게시글</p>
-                <p id="pMore" onClick="location.href='/community/'">더보기</p>
+                <p id="pMore" onClick="location.href='/community/popularlist'">더보기</p>
             </div>
             <div id="divBooksV">
+
+                {% block content %}
+                {% for essay in essay_popularlist %}
                 <div class="divOneBook">
                     <img src="/static/img/book.png" alt="">
                     <div>
@@ -109,7 +112,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="divOneBook">
+                {% endfor %}
+                {% endblock %}
+                <!-- <div class="divOneBook">
                     <img src="/static/img/book.png" alt="">
                     <div>
                         <div id="divIdDate">
@@ -158,7 +163,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </section>

@@ -11,13 +11,15 @@ def signup_view(request):
         return render(request, 'accounts/signup.html', context)
     else:
         # POST 요청 시 데이터 확인 후 회원 생성
-        form = SingUpForm(request.POST)
+        form = SignUpForm(request.POST)
 
         if form.is_valid():
             # 회원가입 처리
-            username = form.cleaned_data['username']
-            email = form.cleaned_data['email']
-            password2 = form.cleaned_data['password2']
+            instance = form.save()
+            return redirect('main')
+            # username = form.cleaned_data['username']
+            # email = form.cleaned_data['email']
+            # password2 = form.cleaned_data['password2']
 
         else:
             # 리다이렉트
