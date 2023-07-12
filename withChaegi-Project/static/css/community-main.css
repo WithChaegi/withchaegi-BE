@@ -26,7 +26,7 @@ body{
     position: relative;
     flex-direction: column;
     background-color: #F8F8F8;
-    background-image: url('/assets/img/background-comunity1.svg');
+    background-image: url('/static/img/background-comunity1.svg');
     background-repeat : no-repeat;
     background-size : cover;
 }
@@ -55,7 +55,7 @@ body{
     color: #525151;
     font-size: 1.4rem;
     padding-left: 20px;
-    background: url('/assets/img/arrow_bottom.svg') calc(95% - 5px) no-repeat;
+    background: url('/static/img/arrow_bottom.svg') calc(95% - 5px) no-repeat;
     background-size: 15px;
     -o-appearance: none;
     -webkit-appearance: none;
@@ -169,7 +169,7 @@ body{
     display: flex;
     flex-direction: column;
     width: 100%;
-    background-image: url('/assets/img/background-comunity2.svg');
+    background-image: url('/static/img/background-comunity2.svg');
     background-repeat : no-repeat;
     background-size : cover;
     padding-top: 8vh;

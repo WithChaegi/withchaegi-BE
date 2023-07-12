@@ -1,4 +1,4 @@
-{% include "essays/header.html" %}
+{% include "header.html" %}
 {% load static %}
 {% block content %}
 <form action="{% url 'essays:essay-create' %}" method="POST" enctype="multipart/form-data">
@@ -140,4 +140,4 @@
 </html>
 </form>
 {% endblock %}
-{% include "essays/footer.html" %}
+{% include "footer.html" %}

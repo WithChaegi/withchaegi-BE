@@ -24,26 +24,39 @@ body{
 #sec1 .divCategory{
     display: flex;
     flex-direction: row;
-    margin-top: 5vh;
+    margin-top: 3vh;
+    gap: 10px;
 }
-#sec1 .divCategory > div{
-    width: 80px;
-    height: 40px;
+
+.radioForm input[type=radio] + label{
+    height: 35px;
+    padding: 0 16px 0 16px;
     font-size: 1.4rem;
-    background-color: #F88103;
+    border: 1px solid #F88103;
+    background: #FFF;
     border-radius: 24px;
     text-align: center;
-    line-height: 40px;
+    line-height: 35px;
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+}
+.radioForm label{
+    display: block;
+}
+.radioForm input[type=radio] {
+    display: none;
+}
+/* Checked */
+.radioForm input[type=radio]:checked + label{
+    background: #F88103;
+    border-radius: 24px;
 }
 
 #sec2{
     display: flex;
     flex-direction: column;
     width: 100%;
-    background-image: url('/static/img/background-main.svg');
-    background-repeat : no-repeat;
-    background-size : cover;
-    padding-top: 8vh;
+    margin-top: 12vh;
 }
 
 #divBooksV{
@@ -64,9 +77,21 @@ body{
     min-height: 210px;
     border-radius: 24px;
     background: rgba(255, 251, 251, 0.20);
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.10);
     margin-bottom: 2vh;
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
 }
+#divBooksV > .divOneBook:hover {
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+    transform: translateY(-4px);
+}
+#divBooksV > .divOneBook:active{
+    background-color: rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.2);
+    transform: translateY(4px);
+}
+
 #divBooksV > .divOneBook > img{
     width: 14vw;
     min-width: 200px;
@@ -136,4 +161,22 @@ body{
     font-size: 1.2rem;
     margin-left: 3.5px;
     margin-right: 20px;
+}
+
+#divGoFillIn{
+    display: flex; 
+    flex-direction: row; 
+    align-items: center; 
+    align-self: flex-end; 
+    background-color: #ECECEC; 
+    border-radius: 24px; 
+    padding: 4px 12px;
+    font-size: 1.4rem;
+    cursor: pointer;
+}
+#divGoFillIn img{
+    margin-right: 6px;
+}
+#divGoFillIn:hover{
+    background-color: #dedede;
 }
