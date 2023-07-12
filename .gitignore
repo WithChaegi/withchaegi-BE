@@ -173,5 +173,6 @@ cython_debug/
 
 # End of https://www.toptal.com/developers/gitignore/api/django
 
+
 # Mac에서 생성되는 메타데이터를 수정하는 파일, 프로젝트와 관련없음
 .DS_Store 
