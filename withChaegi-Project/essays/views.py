@@ -7,7 +7,12 @@ from .models import Essay
 from .models import Comment
 
 def main(request):
-    return render(request, 'main.html')
+    essay_popularlist = Essay.objects.all().order_by('-created_at')[:3] # 최신순 정렬
+    # essay_list = Essay.objects.all().order_by('-essay_likes') # 인기순 정렬
+    context = {
+        'essay_popularlist' : essay_popularlist
+    }
+    return render(request, 'main.html', context)
 
 def essay_list_view(request):
     # essay_list = Essay.objects.all() # Essay 전체 데이터 조회
@@ -17,6 +22,15 @@ def essay_list_view(request):
         'essay_list' : essay_list
     }
     return render(request, 'essays/essay_list.html', context)
+
+def essay_main_view(request):
+    # essay_list = Essay.objects.all() # Essay 전체 데이터 조회
+    essay_list = Essay.objects.all().order_by('-created_at') # 최신순 정렬
+    # essay_list = Essay.objects.all().order_by('-essay_likes') # 인기순 정렬
+    context = {
+        'essay_list' : essay_list
+    }
+    return render(request, 'essays/essay_main.html', context)
 
 def essay_entirelist_view(request):
     essay_entirelist = Essay.objects.all().order_by('-created_at') # 최신순 정렬
@@ -34,16 +48,24 @@ def essay_popularlist_view(request):
     }
     return render(request, 'essays/essay_popularlist.html', context)
 
+def essay_main_popularlist_view(request):
+    essay_main_popularlist = Essay.objects.all().order_by('-created_at') # 최신순 정렬
+    # essay_list = Essay.objects.all().order_by('-essay_likes') # 인기순 정렬
+    context = {
+        'essay_main_popularlist' : essay_main_popularlist
+    }
+    return render(request, 'main.html', context)
+
 def essay_detail_view(request, id):
     try:
         essay = Essay.objects.get(id=id)
     except Essay.DoesNotExist:
         return redirect('main')
     # comment_list = Comment.objects.all().order_by('-created_at') # 최신순 정렬
-    comment = Comment.objects.all().get(id=id)
+    # comment = Comment.objects.all().get(essay=id)
     context = {
         'essay' : essay,
-        'comment' : comment
+        # 'comment' : comment
     }
     return render(request, 'essays/essay_detail.html', context)
 

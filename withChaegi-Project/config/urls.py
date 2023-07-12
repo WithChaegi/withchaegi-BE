@@ -18,7 +18,7 @@ urlpatterns = [
 
 
     path('accounts/', include('accounts.urls', namespace='accounts')),
-    path('club/', include('bookclub.urls', namespace='bookclub'))
+    path('club/', include('bookclub.urls', namespace='bookclub')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
