@@ -20,7 +20,7 @@
     </section>
     <section id="sec2">
         <div class="divH">
-            <img class="cClub1" src="/static/img/book.png" alt="책 이미지">
+            <img class="cClub1" src="/media/bookclub/{{ club.club_id }}.jfif" alt="책 이미지">
             <div class="cClub2" id="divClub1">
                 <div id="type">
                     <p>토론 분야</p>
@@ -61,11 +61,11 @@
                     <img src="/static/img/clock.png" alt="사람">
                     <div style="height: 28vh; display: flex; flex-direction: column; justify-content: space-between;">
                         <p class="pBlack1">{{club.date1}}(금), PM {{club.time}}</p>
-                        <p class="pGray">1회차 {{club.date1}}(금)</p>
-                        <p class="pGray">2회차 {{club.date2}}(금)</p>
-                        <p class="pGray">3회차 {{club.date3}}(금)</p>
-                        <p class="pGray">4회차 {{club.date4}}(금)</p>
-                        <p class="pGray">5회차 {{club.date5}}(금)</p>
+                        {% if club.date1 != '' %}<p class="pGray">1회차 {{club.date1}}(금)</p>{% endif %}
+                        {% if club.date2 != '' %}<p class="pGray">2회차 {{club.date2}}(금)</p>{% endif %}
+                        {% if club.date3 != '' %}<p class="pGray">3회차 {{club.date3}}(금)</p>{% endif %}
+                        {% if club.date4 != '' %}<p class="pGray">4회차 {{club.date4}}(금)</p>{% endif %}
+                        {% if club.date5 != '' %}<p class="pGray">5회차 {{club.date5}}(금)</p>{% endif %}
                     </div>
                 </div>
             </div>
@@ -76,7 +76,7 @@
                 </div>
             </div>
         </div>
-        <div class="orangeBtn">현재 {{club.max_members}}명 자리 중에 {{club.max_members}} - {{club.applied_members}}자리 밖에 안 남았어요</div>
+        <div class="orangeBtn">현재 {{club.max_members}}명 자리 중에 {{club.remaining}}자리 밖에 안 남았어요</div>
         <div id="div3Btn">
             <div id="likeBtn" style="width: 8%;" class="emptyBtn"><img id="likeImg" src="/static/img/likeEmpty.svg" alt="좋아요"></div>
             <div id="submit" style="width: 44%;" class="emptyBtn" onclick="location.href='/club/{{club.club_id}}/apply'">신청하기</div>
