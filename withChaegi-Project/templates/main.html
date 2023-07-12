@@ -85,18 +85,22 @@
             </div>
             <div id="divBooksV">
 
-                {% block content %}
                 {% for essay in essay_popularlist %}
-                <div class="divOneBook">
-                    <img src="/static/img/book.png" alt="">
+                <div class="divOneBook" onclick="location.href='/community/{{ essay.id }}'">
+                    <!-- <img src="/static/img/book.png" alt=""> -->
+                    {% if essay.book_photo %}
+                        <img src="{{ essay.book_photo.url }}" alt="책 사진">
+                    {% else %}
+                        <img src="http://via.placeholder.com/64x100" alt="책 사진">
+                    {% endif %}
                     <div>
                         <div id="divIdDate">
-                            <div id="id">소독이</div>
-                            <div id="date">2023.05.18</div>
+                            <div id="id">{{ essay.writer }}</div>
+                            <div id="date">{{ essay.created_at|date:"Y.m.d" }}</div>
                         </div>
-                        <p id="title">2023 끄적임_도서 원작 드라마 파친코 후기</p>
+                        <p id="title">{{ essay.essay_title }}</p>
                         <div id="content">
-                            파친코를 읽었는데 너무너무 재밌었어요ㅜㅠㅜㅠㅜㅠㅠ 눈물 파티 내가 만약에 일정감정기에 태어났으면 어땠을까...
+                            {{ essay.essay_content }}
                         </div>
                         <div id="divLikeReply">
                             <div>
@@ -107,13 +111,13 @@
                             <div>
                                 <img src="/static/img/reply.svg" alt="댓글 이미지">
                                 <p>댓글</p>
-                                <strong>23</strong>
+                                <strong>{{ essay.comment_set.all.count }}</strong>
                             </div>
                         </div>
                     </div>
                 </div>
                 {% endfor %}
-                {% endblock %}
+                
                 <!-- <div class="divOneBook">
                     <img src="/static/img/book.png" alt="">
                     <div>

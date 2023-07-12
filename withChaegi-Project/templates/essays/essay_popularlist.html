@@ -48,7 +48,7 @@
                 <!-- <div class="divOneBook"> -->
                 <script>var essayId = "{{ essay.id }}";</script>
                 essayId = "{{ essay.id }}"
-                <div class="divOneBook" onclick="location.href='/community/' + essayId">
+                <div class="divOneBook" onclick="location.href='/community/{{ essay.id }}'">
                 
 
 
@@ -84,7 +84,7 @@
                 {% endfor %}
                 {% endblock %}
                 
-                <div id="divGoFillIn">
+                <div id="divGoFillIn" onClick="location.href='/community/create'">
                     <img style="height: 1.4rem;" src="/static/img/pencil.svg" alt="작성하러가기">
                     작성하러가기
                 </div>

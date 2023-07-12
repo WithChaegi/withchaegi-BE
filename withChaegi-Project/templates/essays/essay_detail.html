@@ -40,12 +40,15 @@
     <div id="cbtn1">등록</div>
     <div id="ctext1">해당 게시물에 대한 00님의 생각을 적어주세요. 책에 대해 서로의 생각을 주고받는 건
         곧 나의 세계를 확장하는 거니까요!</div>
-
-    <img id="cuser2" src="/static/img/img3/user2.png">
-    <div id="cbox2"></div>
-    <div id="creator1">{{ comment.writer }}</div>
-    <div id="date1">{{ comment.created_at }}</div>    
-    <div id="ctext2">{{ comment.comment_content }}</div>
+    {% for comment in essay.comment_set.all%}
+        <div style="margin-bottom: 10px;">
+            <img id="cuser2" src="/static/img/img3/user2.png">
+            <div id="cbox2"></div>
+            <div id="creator1">{{ comment.writer }}</div>
+            <div id="date1">{{ comment.created_at }}</div>    
+            <div id="ctext2">{{ comment.comment_content }}</div>
+        </div>
+    {% endfor %}
 
 
 
