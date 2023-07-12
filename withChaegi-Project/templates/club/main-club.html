@@ -1,5 +1,4 @@
 {% include 'club/header.html' %}
-{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,10 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>채기랑</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/static/css/main-club.css">
     <link rel="stylesheet" href="/static/css/header.css">
     <link rel="stylesheet" href="/static/css/footer.css">
     <script src="/static/js/includeHTML.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
     <section id="sec1">
@@ -23,59 +24,120 @@
             <div>독서클럽 만들기</div>
         </div>
     </section>
-    <section id="sec2">
-        <div style="display: flex; flex-direction: column; align-items: center;">
-            <div id="div1" style="display: flex;
-            flex-direction: row;">
-                <div>전체</div>
-                <div>인기</div>
+    <section id="sec2" style="display: flex; flex-direction: column; align-items: center;">
+        <div id="div1" style="display: flex; flex-direction: row;">
+            <div class="radioForm">
+                <input type="radio" name="option" id="allOption" value="all" checked>
+                <label for="allOption">전체</label>
             </div>
-            <div id="div2" style="display: flex; flex-direction: row;">
-                <div>기본순</div>
-                <div class="dropdown dropdown-toggle" data-bs-toggle="dropdown">
-                    책 분야
-                    <ul class="dropdown-menu">
-                      <li>소설/시</li>
-                      <li>인문</li>
-                      <li>사회</li>
-                      <li>역사</li>
-                      <li>예술</li>
-                      <li>경영 경제</li>
-                    </ul>
-                </div>   
-                <div class="dropdown dropdown-toggle" data-bs-toggle="dropdown">
-                    인원
-                    <ul class="dropdown-menu">
-                      <li>2인</li>
-                      <li>3~4인</li>
-                      <li>5~6인</li>
-                      <li>7인 이상</li>
-                    </ul>
-                </div> 
-                <div>장소</div>
-                <div>일시</div>
+            <div class="radioForm">
+                <input type="radio" name="option" id="popularOption" value="popular">
+                <label for="popularOption">인기</label>
             </div>
         </div>
+        <div id="div2" style="display: flex; flex-direction: row;">
+            <div id="resetBtn"><img style="height: 10px; margin-right: 3px" src="/static/img/filter.svg" alt="필터">기본순</div>
+            <select id="bookBtn">
+                <option value="none">책 선택</option>
+                <option value="1">소설/시</option>
+                <option value="2">인문</option>
+                <option value="3">사회</option>
+                <option value="4">역사</option>
+                <option value="5">예술</option>
+                <option value="6">과학</option>
+                <option value="7">경제 경영</option>
+            </select>
+            <select id="peopleBtn">
+                <option value="none">인원</option>
+                <option value="1">2인</option>
+                <option value="2">3~4인</option>
+                <option value="3">5~6인</option>
+                <option value="4">7인 이상</option>
+            </select>
+            <select id="placeBtn">
+                <option value="none">장소</option>
+                <option value="1">거리순</option>
+            </select>
+            <select id="dateBtn">
+                <option value="none">일시</option>
+                <option value="1">최신순</option>
+            </select>
+        </div>
+        {% for club in clubs %}
         <div id="divBooksH">
-            {% for club in clubs %}
-            <div class="divOneBook" onclick="location.href='/club/'+club.id">
-                <img src="/static/img/dallergut.jfif" alt="">
-                <div>
-                    <p id="book_title">{{club.book_title}}</p>
-                    <div id="divPlaceDate">
-                        <div id="district_location">{{club.district_location}}</div>
-                        <div id="date">5/18</div>
+            {% for _ in fourloop %}
+                <div class="divOneBook" onclick="location.href='/club/{{ club.club_id }}'">
+                    <img src="/static/img/dallergut.jfif" alt="">
+                    <div>
+                        <p id="book_title">{{ club.book_title }}</p>
+                        <div id="divPlaceDate">
+                            <div id="district_location">{{ club.district_location }}</div>
+                            <div id="date">{{club.date1}}</div>
+                        </div>
+                        <p id="info">첫 모임 {{club.date1}}(목) {{ club.time }}</p>
                     </div>
-                    <p id="info">첫 모임 5/18(목) 18:00</p>
                 </div>
-            </div>
             {% endfor %}
         </div>
+        {% endfor %}
     </section>
     <script>
         includeHTML();
+
+        let resetBtn = $('#resetBtn')
+        let bookBtn = $('#bookBtn')
+        let peopleBtn = $('#peopleBtn')
+        let placeBtn = $('#placeBtn')
+        let dateBtn = $('#dateBtn')
+
+        // 기본순 클릭시 카테고리 초기화
+        resetBtn.click(function() {
+            bookBtn.val('none')
+            peopleBtn.val('none')
+            placeBtn.val('none')
+            dateBtn.val('none')
+
+            changeBackgroundColor(bookBtn);
+            changeBackgroundColor(peopleBtn);
+            changeBackgroundColor(placeBtn);
+            changeBackgroundColor(dateBtn);
+
+            resetBtn.css('background-color', '#F88103')
+        })
+
+        // 값이 "none"이 아닐 때 배경색을 변경하는 함수
+        function changeBackgroundColor(element) {
+            if (element.val() !== 'none') {
+                element.css('background-color', '#F88103');
+                resetBtn.css('background-color', '#ffffff00')
+            } else {
+                element.css('background-color', '#ffffff00'); // 기본 배경색으로 되돌리기
+            }
+        }
+
+        // 값 변경 시 배경색을 변경하는 이벤트 핸들러
+        bookBtn.change(function() {
+            changeBackgroundColor(bookBtn);
+        });
+
+        peopleBtn.change(function() {
+            changeBackgroundColor(peopleBtn);
+        });
+
+        placeBtn.change(function() {
+            changeBackgroundColor(placeBtn);
+        });
+
+        dateBtn.change(function() {
+            changeBackgroundColor(dateBtn);
+        });
+
+        // 페이지 로드 시 배경색을 초기화하기 위해 한번 호출
+        changeBackgroundColor(bookBtn);
+        changeBackgroundColor(peopleBtn);
+        changeBackgroundColor(placeBtn);
+        changeBackgroundColor(dateBtn);
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 </body>
 </html>
 {% include 'club/footer.html' %}

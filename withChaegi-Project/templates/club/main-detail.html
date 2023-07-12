@@ -1,3 +1,4 @@
+{% include 'club/header.html' %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,11 +12,10 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-    <div include-html="header.html"></div>
     <section id="sec1">
-        <div style="display: flex; flex-direction: row; align-items: baseline; border-bottom: 1px solid black; padding: 6px;">
-            <p style="font-size: 2.2rem;">범죄학 연구자와 함께 콘텐츠 사회문제 짚어보기</p>
-            <img style="width: 20px; height: 20px;" src="/static/img/Close.png" alt="닫기">
+        <div style="display: flex; flex-direction: row; align-items: center; border-bottom: 1px solid black; padding: 6px;">
+            <p style="font-size: 2.2rem;">{{club.group_name}}</p>
+            <img onClick="location.href='/club/entirelist'" src="/static/img/close.png" alt="닫기">
         </div>
     </section>
     <section id="sec2">
@@ -25,25 +25,22 @@
                 <div id="type">
                     <p>토론 분야</p>
                     <div style="margin-bottom: 2.5vh;">
-                        <div>사회</div>
-                        <div>과학</div>
+                        <div>{{club.discussion_field}}</div>
                     </div>
                 </div>
                 <div id="keyword">
                     <p>토론 키워드</p>
                     <div>
-                        <div>#추리</div>
-                        <div>#성장</div>
-                        <div>#수사</div>
+                        <div>#{{club.discussion_keywords}}</div>
                     </div>
                 </div>
                 <div id="title">
                     <p>책 제목</p>
-                    <div>범죄 과학, 그날의 진실을 밝혀라</div>
+                    <div>{{club.book_title}}</div>
                 </div>
                 <div id="author">
                     <p>지은이</p>
-                    <div>브릿지 허스/ 조윤경 역</div>
+                    <div>{{club.book_author}}</div>
                 </div>
             </div>
         </div>
@@ -51,42 +48,41 @@
             <div class="cClub1" id="divClub2">
                 <div>
                     <img src="/static/img/people.png" alt="사람">
-                    <p class="pBlack1">최소 4명에서 최대 6명까지</p>
+                    <p class="pBlack1">최소 {{club.min_members}}명에서 최대 {{club.max_members}}명까지</p>
                 </div>
                 <div>
                     <img src="/static/img/location.png" alt="사람">
                     <div>
-                        <p class="pBlack1">마포구, 홍대</p>
-                        <p class="pGray">서울특별시 마포구 홍익로 2길 16</p>
+                        <p class="pBlack1">{{club.district_location}}, {{club.dong_location}}</p>
+                        <p class="pGray">{{club.full_address}}</p>
                     </div>
                 </div>
                 <div>
                     <img src="/static/img/clock.png" alt="사람">
                     <div style="height: 28vh; display: flex; flex-direction: column; justify-content: space-between;">
-                        <p class="pBlack1">5/26(금), PM 08:00</p>
-                        <p class="pGray">1회차 5/26(금)</p>
-                        <p class="pGray">2회차 6/2(금)</p>
-                        <p class="pGray">3회차 6/9(금)</p>
-                        <p class="pGray">4회차 6/16(금)</p>
-                        <p class="pGray">5회차 6/23(금)</p>
+                        <p class="pBlack1">{{club.date1}}(금), PM {{club.time}}</p>
+                        <p class="pGray">1회차 {{club.date1}}(금)</p>
+                        <p class="pGray">2회차 {{club.date2}}(금)</p>
+                        <p class="pGray">3회차 {{club.date3}}(금)</p>
+                        <p class="pGray">4회차 {{club.date4}}(금)</p>
+                        <p class="pGray">5회차 {{club.date5}}(금)</p>
                     </div>
                 </div>
             </div>
             <div class="cClub2" id="divClub3">
                 <p class="pBlack2">클럽 상세 내용</p>
                 <div class="pGray">
-                    이야기 속에서 범죄 사건을 마주할 때 여러분은 어떤 생각이 드나요? 이러한 사건들은 흥미진진한 재미 요소이기도하며, 우리에게 고민과 충격을 던져주기도 하는데요, 이번 클럽에서 다루는 책들은 공통적으로 '커플의 일탈'을 다루고 있어요. 인물들이 저지르는 방화, 살인 등의 범죄는 평균적 도덕을 갖추지 못한 사람이 저지르는 충동적 일탈이기만 할까요? 비뚤어진 사랑의 결과일까요? 소설 속의 인물과 실제 사건의 인물이 저지른 범죄를 통해, 그 시대 사회상을 살펴보며, 더 넓은 시각에서 이들의 행동을 이야기해봅니다. 이를 통해 우리의 오늘을 비추어 대화 나눠요.
+                    {{club.club_details}}
                 </div>
             </div>
         </div>
-        <div class="orangeBtn">현재 6명 자리 중에 3자리 밖에 안 남았어요</div>
+        <div class="orangeBtn">현재 {{club.max_members}}명 자리 중에 {{club.max_members}} - {{club.applied_members}}자리 밖에 안 남았어요</div>
         <div id="div3Btn">
-            <div id="likeBtn" style="width: 8%;" class="emptyBtn"><img id="likeImg" src="/static/img/like-empty.svg" alt="좋아요"></div>
-            <div id="submit" style="width: 44%;" class="emptyBtn">신청하기</div>
-            <div style="width: 44%;" class="emptyBtn">다른 독서 모임 알아보러 가기</div>
+            <div id="likeBtn" style="width: 8%;" class="emptyBtn"><img id="likeImg" src="/static/img/likeEmpty.svg" alt="좋아요"></div>
+            <div id="submit" style="width: 44%;" class="emptyBtn" onclick="location.href='/club/{{club.club_id}}/apply'">신청하기</div>
+            <div id="back" style="width: 44%;" class="emptyBtn" onclick="location.href='/club/entirelist'">다른 독서 모임 알아보러 가기</div>
         </div>
     </section>
-    <div include-html="footer.html"></div>
     <script>
         includeHTML();
 
@@ -99,20 +95,20 @@
             like_img.attr('src', '/static/img/like.svg');
         }
         else{
-            like_img.attr('src', '/static/img/like_empty.svg');
+            like_img.attr('src', '/static/img/likeEmpty.svg');
         }
         
-        $("#likeBtn").click(function(){
-            console.log('클릭')
+        like_btn.click(function(){
             if(!like_status){
                 like_status=true;
                 like_img.attr('src', '/static/img/like.svg');
             }
             else{
                 like_status=false;
-                like_img.attr('src', '/static/img/like_empty.svg');
+                like_img.attr('src', '/static/img/likeEmpty.svg');
             }
         })
     </script>
 </body>
 </html>
+{% include 'club/footer.html' %}

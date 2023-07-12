@@ -4,15 +4,21 @@ from .models import BookClub
 from .forms import BookClubBaseForm, BookClubCreateForm
 from django.db.models import F, Q
 import simplejson as json
+import datetime
 
 q = Q()
+
+def index(request):
+    temp_list = [0,0,0,0]
+    context={"fourloop":temp_list}
+    return render(request,'main-club.html',context)
 
 # 책분야, 인원, 장소, 일시별로 필터링 코드
 def filtering(request):
     discussion_field = request.GET.getlist('discussion_field', None)
     max_members = request.GET.get('max_members', None)
     dong_location = request.GET.get('dong_location', None)
-    date = request.GET.get('date', None)
+    date1 = request.GET.get('date1', None)
     
     # q = Q()
 
@@ -22,11 +28,14 @@ def filtering(request):
         q &= Q(max_members = max_members)
     if dong_location:
         q &= Q(dong_location = dong_location)
-    if date:
-        q &= Q(date = date)
+    if date1:
+        q &= Q(date1 = date1)
     
     clubs = BookClub.objects.filter(q)
     return clubs
+
+def main_page(request):
+    return render(request, 'club/offline-main.html')
 
 # 전체 독서 모임 확인
 def entire_list(request):
@@ -44,7 +53,7 @@ def entire_list(request):
                 'book_photo': club.book_photo,
                 'book_title': club.book_title,
                 'district_location': club.district_location,
-                'date': club.date[0], # 첫번째 모임 날짜
+                'date1': club.date1,
                 'time': club.time
             }
             club_list.append(club_data)
@@ -69,7 +78,7 @@ def popular_list(request):
                 'book_photo': club.book_photo,
                 'book_title': club.book_title,
                 'district_location': club.district_location,
-                'date': club.date[0], # 첫번째 모임 날짜
+                'date1': club.date1,
                 'time': club.time
                 # 'likes': club.likes
             }
@@ -89,7 +98,11 @@ def club_detail(request, pk):
             'book_title': club.book_title,
             'book_author': club.book_author,
             'regularity': club.regularity,
-            'date': club.date,
+            'date1': club.date1,
+            'date2': club.date2,
+            'date3': club.date3,
+            'date4': club.date4,
+            'date5': club.date5,
             'time': club.time,
             'district_location': club.district_location,
             'dong_location': club.dong_location,
@@ -113,21 +126,25 @@ def create_club(request):
         form = BookClubBaseForm(request.POST, request.FILES)
 
         if form.is_valid():
-            date_values = form.cleaned_data['date']
+            # date_values = form.cleaned_data['date']
             # date_strings = [date.strftime('%Y-%m-%d') for date in date_values]
-            date_strings = [date for date in date_values]
-            time_values = form.cleaned_data['time']
-            # time_strings = [time.strftime('%H:%M:%S') for time in time_values]
-            time_strings = [time for time in time_values]
+            # date_strings = [date for date in date_values]
+            # time_values = form.cleaned_data['time']
+            # time_strings = datetime.strftime(time_values, "%H:%M").time()
+            # time_strings = [time for time in time_values]
             book_club = BookClub.objects.create(
                 group_name = form.cleaned_data['group_name'],
                 book_photo = form.cleaned_data['book_photo'],
                 book_title = form.cleaned_data['book_title'],
                 book_author = form.cleaned_data['book_author'],
                 regularity = form.cleaned_data['regularity'],
-                # date = form.cleaned_data['date'],
+                date1 = form.cleaned_data['date1'],
+                date2 = form.cleaned_data['date2'],
+                date3 = form.cleaned_data['date3'],
+                date4 = form.cleaned_data['date4'],
+                date5 = form.cleaned_data['date5'],
                 # date = date_strings,
-                # time = form.cleaned_data['time'],
+                time = form.cleaned_data['time'],
                 # time = time_strings,
                 city_location = form.cleaned_data['city_location'],
                 district_location = form.cleaned_data['district_location'],
@@ -144,8 +161,8 @@ def create_club(request):
             #     book_club.time.append(time_string)
             # book_club.date = date_strings
             # book_club.time = time_strings
-            book_club.date = json.dumps(date_strings)
-            book_club.time = json.dumps(time_strings)
+            # book_club.date = json.dumps(date_strings)
+            # book_club.time = json.dumps(time_strings)
 
             book_club.save()
 
