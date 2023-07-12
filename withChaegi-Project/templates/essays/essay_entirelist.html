@@ -92,7 +92,7 @@
                         </div>
                         <p id="title">{{ essay.essay_title }}</p>
                         <div id="content">
-                            {{ essay.essay_content }}
+                            {{ essay.essay_content|truncatechars:155 }}
                         </div>
                         <div id="divLikeReply">
                             <div>

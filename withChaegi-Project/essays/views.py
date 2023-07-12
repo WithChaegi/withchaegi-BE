@@ -25,7 +25,7 @@ def essay_list_view(request):
 
 def essay_main_view(request):
     # essay_list = Essay.objects.all() # Essay 전체 데이터 조회
-    essay_entirelist = Essay.objects.all().order_by('-created_at') # 최신순 정렬
+    essay_entirelist = Essay.objects.all().order_by('-created_at')[:3] # 최신순 정렬
     # essay_list = Essay.objects.all().order_by('-essay_likes') # 인기순 정렬
     context = {
         'essay_entirelist' : essay_entirelist
