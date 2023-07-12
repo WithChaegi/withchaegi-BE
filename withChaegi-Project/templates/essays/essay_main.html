@@ -159,10 +159,14 @@
             </div>
             <div id="divBooksV">
 
-                {% for essay in essay_list %}
-                <div class="divOneBook" onClick="location.href='post.html'">
+                {% for essay in essay_entirelist %}
+                <div class="divOneBook" onclick="location.href='/community/{{ essay.id }}'">
                     <p class="pHover">자세히 보기</p>
-                    <img src="/static/img/book.png" alt="">
+                    {% if essay.book_photo %}
+                        <img src="{{ essay.book_photo.url }}" alt="책 사진">
+                    {% else %}
+                        <img src="http://via.placeholder.com/64x100" alt="책 사진">
+                    {% endif %}
                     <div>
                         <div id="divIdDate">
                             <div id="id">{{ essay.writer }}</div>
