@@ -159,8 +159,7 @@
             </div>
             <div id="divBooksV">
 
-                {% block content %}
-                {% for essay in essay_entirelist %}
+                {% for essay in essay_list %}
                 <div class="divOneBook" onClick="location.href='post.html'">
                     <p class="pHover">자세히 보기</p>
                     <img src="/static/img/book.png" alt="">
@@ -188,7 +187,6 @@
                     </div>
                 </div>
                 {% endfor %}
-                {% endblock %}
 
             </div>
         </div>

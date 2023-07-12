@@ -46,6 +46,19 @@
 
         <div id="up-s2t1" class="up-st">사진 첨부</div>
         <div id="s1"></div>
+        <label for="id_image"></label>
+        <input type="file" name="image" accept="image/" id="id_image">
+        <script>
+            // 첫 번째 코드의 이미지 아이콘과 두 번째 코드의 파일 선택 요소를 가져옵니다.
+            const cameraIcon = document.getElementById("s1");
+            const fileInput = document.getElementById("id_image");
+        
+            // 이미지 아이콘 클릭 시 파일 선택 요소를 클릭합니다.
+            cameraIcon.addEventListener("click", function () {
+                fileInput.click();
+            });
+        </script>
+
         <img id="camera-icon" src="/static/img/img3/camera.png">
         <img id="dot-icon" src="/static/img/img3/camera-dot.png">
         <div id="s1-num">
