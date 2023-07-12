@@ -1,0 +1,216 @@
+{% include "header.html" %}
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>채기랑</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/community-main.css">
+    <link rel="stylesheet" href="/static/css/header.css">
+    <link rel="stylesheet" href="/static/css/footer.css">
+    <script src="/static/js/includeHTML.js"></script>
+</head>
+<body>
+    <!-- <div include-html="header.html"></div> -->
+    <div id="divSearch">
+        <input placeholder="검색어를 입력하세요">
+        <img src="/static/img/searchBtn.png" alt="검색 버튼">
+    </div>
+    <section id="sec1">
+        <div class="cWidth" id="divBanner">
+            <p>다양한 도서<br>다양한 의견</p>
+            <div onClick="location.href='create'">감상문 작성하러 가기</div>
+        </div>
+        <div id="divSelectors">
+            <select>
+                <option value="none">국내/외 선택</option>
+                <option value="1">국내</option>
+                <option value="2">국외</option>
+            </select>
+            <select>
+                <option value="none">비/문학 선택</option>
+                <option value="1">문학</option>
+                <option value="2">비문학</option>
+            </select>
+            <select>
+                <option value="none">분야 선택</option>
+                <option value="1">소설/시</option>
+                <option value="2">인문</option>
+                <option value="3">사회</option>
+                <option value="4">역사</option>
+                <option value="5">예술</option>
+                <option value="6">과학</option>
+                <option value="7">경제 경영</option>
+            </select>
+        </div>
+    </section>
+    <section id="sec2">
+        <div class="cWidth">
+            <div style="display: flex; flex-direction: row; justify-content: space-between; align-items: baseline; margin-bottom: 3vh;">
+                <p style="font-weight: 500; font-size: 2.4rem;">인기 게시판</p>
+                <p id="pMore" onClick="location.href='/community/popularlist'">더보기</p>
+            </div>
+            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="divBestOneBook" onClick="location.href='post.html'">
+                            <img style="border-radius: 0;" src="/static/img/book.png" alt="">
+                            <div>
+                                <div id="divIdDate">
+                                    <div id="id">소독이</div>
+                                    <div id="date">2023.05.18</div>
+                                </div>
+                                <p id="title">2023 끄적임_도서 원작 드라마 파친코 후기</p>
+                                <div id="content">
+                                    파친코를 읽었는데 너무너무 재밌었어요ㅜㅠㅜㅠㅜㅠㅠ 눈물 파티 내가 만약에 일정감정기에 태어났으면 어땠을까...
+                                </div>
+                                <div id="divLikeReply">
+                                    <div>
+                                        <img src="/static/img/like.svg" alt="좋아요 이미지">
+                                        <p>좋아요</p>
+                                        <strong>177</strong>
+                                    </div>
+                                    <div>
+                                        <img src="/static/img/reply.svg" alt="댓글 이미지">
+                                        <p>댓글</p>
+                                        <strong>23</strong>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="divBestOneBook" onClick="location.href='post.html'">
+                            <img style="border-radius: 0;" src="/static/img/book.png" alt="">
+                            <div>
+                                <div id="divIdDate">
+                                    <div id="id">소독이</div>
+                                    <div id="date">2023.05.18</div>
+                                </div>
+                                <p id="title">2023 끄적임_도서 원작 드라마 파친코 후기</p>
+                                <div id="content">
+                                    파친코를 읽었는데 너무너무 재밌었어요ㅜㅠㅜㅠㅜㅠㅠ 눈물 파티 내가 만약에 일정감정기에 태어났으면 어땠을까...
+                                </div>
+                                <div id="divLikeReply">
+                                    <div>
+                                        <img src="/static/img/like.svg" alt="좋아요 이미지">
+                                        <p>좋아요</p>
+                                        <strong>177</strong>
+                                    </div>
+                                    <div>
+                                        <img src="/static/img/reply.svg" alt="댓글 이미지">
+                                        <p>댓글</p>
+                                        <strong>23</strong>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="divBestOneBook" onClick="location.href='post.html'">
+                            <img style="border-radius: 0;" src="/static/img/book.png" alt="">
+                            <div>
+                                <div id="divIdDate">
+                                    <div id="id">소독이</div>
+                                    <div id="date">2023.05.18</div>
+                                </div>
+                                <p id="title">2023 끄적임_도서 원작 드라마 파친코 후기</p>
+                                <div id="content">
+                                    파친코를 읽었는데 너무너무 재밌었어요ㅜㅠㅜㅠㅜㅠㅠ 눈물 파티 내가 만약에 일정감정기에 태어났으면 어땠을까...
+                                </div>
+                                <div id="divLikeReply">
+                                    <div>
+                                        <img src="/static/img/like.svg" alt="좋아요 이미지">
+                                        <p>좋아요</p>
+                                        <strong>177</strong>
+                                    </div>
+                                    <div>
+                                        <img src="/static/img/reply.svg" alt="댓글 이미지">
+                                        <p>댓글</p>
+                                        <strong>23</strong>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                    <img style="position: absolute; height: 6.5vh; left: 0" src="/static/img/arrow_left.svg" alt="이전 버튼">
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                    <img style="position: absolute; height: 6.5vh; right: 0;" src="/static/img/arrow_right.svg" alt="다음 버튼">
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+            
+        </div>
+    </section>
+    <section id="sec3">
+        <div class="cWidth">
+            <div style="display: flex; flex-direction: row; justify-content: space-between; align-items: baseline; margin-bottom: 3vh;">
+                <p style="font-weight: 500; font-size: 2.4rem; margin-top: 5vh;">전체 게시판</p>
+                <p id="pMore" onClick="location.href='/community/entirelist'">더보기</p>
+            </div>
+            <div id="divBooksV">
+
+                {% block content %}
+                {% for essay in essay_entirelist %}
+                <div class="divOneBook" onClick="location.href='post.html'">
+                    <p class="pHover">자세히 보기</p>
+                    <img src="/static/img/book.png" alt="">
+                    <div>
+                        <div id="divIdDate">
+                            <div id="id">{{ essay.writer }}</div>
+                            <div id="date">{{ essay.created_at|date:"Y.m.d" }}</div>
+                        </div>
+                        <p id="title">{{ essay.essay_title }}</p>
+                        <div id="content">
+                            {{ essay.essay_content }}
+                        </div>
+                        <div id="divLikeReply">
+                            <div>
+                                <img src="/static/img/like.svg" alt="좋아요 이미지">
+                                <p>좋아요</p>
+                                <strong>177</strong>
+                            </div>
+                            <div>
+                                <img src="/static/img/reply.svg" alt="댓글 이미지">
+                                <p>댓글</p>
+                                <strong>23</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                {% endblock %}
+
+            </div>
+        </div>
+        <!-- <div include-html="footer.html"></div> -->
+    </section>
+    <script>
+        includeHTML();
+    </script>
+    <script>
+        const selects = document.querySelectorAll('select');
+
+        selects.forEach(select => {
+        select.addEventListener('change', () => {
+            if (select.value !== 'none') {
+                select.style.border = '2px solid #000';
+            } else {
+                select.style.border = '1px solid #000';
+            }
+        });
+        });
+    </script>
+</body>
+</html>
+
+{% include "footer.html" %}

@@ -1,0 +1,149 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Roboto&display=swap');
+
+html{
+    font-size:62.5%;
+}
+
+div,p,input{
+    margin: 0;
+    padding: 0;
+}
+a{
+    text-decoration: none;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    height: 100vh;
+    background-image: url('/static/img/background.svg');
+    background-repeat : no-repeat;
+    background-size : cover;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+#divMain{
+    width: 55%;
+    height: 80vh;
+    align-self: center;
+    margin: 0 auto;
+    background-color: rgba(255, 255, 255, 0.70);
+    border-radius: 50px;
+    box-shadow: 0px 4px 100px 0px rgba(0, 0, 0, 0.25);
+    text-align: center;
+}
+
+#pTitle{
+    font-size: 3.6rem;
+    font-weight: 600;
+    margin-top: 12vh;
+    margin-bottom: 1.5vh;
+}
+#pTitleSub{
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: #726F6F;
+}
+
+#divSelectLogin{
+    display: flex;
+    flex-direction: row;
+    width: 60%;
+    height: 4.5vh;
+    margin: 0 auto;
+    background-color: rgba(255, 255, 255, 0.70);
+    box-shadow: 0px 4px 20px 0px rgba(45, 74, 145, 0.25);
+    font-size: 1.2rem;
+    color: #605C65;
+    margin-top: 6vh;
+}
+#divSelectLogin > div{
+    width: 50%;
+}
+#divSelectLogin > div div{
+    width: fit-content;
+    height: 4vh;
+    margin: 0 auto;
+    text-align: center;
+    line-height: 4.5vh;
+    color: #605C65;
+}
+
+#divIdPw{
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    margin-top: 2vh;
+    width: 60%;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.2rem;
+}
+#divIdPw input{
+    width: 96%;
+    height: 4.5vh;
+    border: 0px;
+    outline: 1px solid #79747E;
+    border-radius: 4px;
+    padding: 0 2% 0 2%;
+    font-size: 0.8rem;
+}
+#divIdPw input:focus{
+    outline: 1.5px solid black;
+}
+
+#divFindIdPw{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    font-family: 'Roboto', sans-serif;
+    margin-top: 2vh;
+}
+#divFindIdPw > p{
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: #726F6F;
+}
+
+#divSocialLogin{
+    display: flex;
+    flex-direction: row;
+    width: 30%;
+    justify-content: space-between;
+    margin: 0 auto;
+    margin-top: 3vh;
+}
+#divSocialLogin > img{
+    height: 5vh;
+}
+
+#btnLoginOrSignup{
+    width: 42%;
+    height: 4.5vh;
+    background-color: #F88103;
+    border: 2px solid #F88103;
+    margin: 0 auto;
+    margin-top: 4vh;
+    border-radius: 100px;
+    font-size: 1.2rem;
+    color: white;
+    font-weight: 500;
+    line-height: 4.5vh;
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+}
+#btnLoginOrSignup:hover {
+    box-shadow: 0px 0 20px rgba(248, 130, 3, 0.528);
+}
+#btnLoginOrSignup:active{
+    background-color: rgba(248, 130, 3, 0.528);
+    box-shadow: 0px 5px 20px rgba(248, 130, 3, 0.528);
+    transform: translateY(3px);
+}
+#btnLoginOrSignup:active{
+    background-color: #F88103;
+    box-shadow: 0px 5px 20px #f882035a;
+    transform: translateY(3px);
+}

@@ -1,0 +1,143 @@
+{% include "header.html" %}
+{% load static %}
+{% block content %}
+<form action="{% url 'essays:essay-create' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+<!DOCTYPE html>
+<html lang="ko">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>채기랑</title>
+    <link rel="stylesheet" href="/static/css/upload.css">
+    <link rel="stylesheet" href="/static/css/header.css">
+    <link rel="stylesheet" href="/static/css/footer.css">
+    <script src="/static/js/includeHTML.js"></script>
+</head>
+
+
+<body>
+    <!-- <div include-html="header.html"></div> -->
+    
+        <div id="page-title">
+            <div class="page-title-text1">책을 읽고 난 후의 </div>
+            <div class="page-title-text2">나의 감상평을 적어 보아요</div>
+        </div>
+        
+        <div id="up-s1t1" class="up-st">감상문 제목</div>
+        <input id="up-s1b1" placeholder="20자 이내로 작성해주세요.">
+
+        <label for="id_essay_title">감상문 제목</label>
+        <textarea name="essay_title" id="id_essay_title"></textarea>
+
+        <script>
+            // 첫 번째 코드의 입력 요소와 두 번째 코드의 요소를 가져옵니다.
+            const inputElement = document.getElementById("up-s1b1");
+            const textareaElement = document.getElementById("id_essay_title");
+            // 첫 번째 코드의 입력값이 변경될 때마다 두 번째 코드에 복사합니다.
+            inputElement.addEventListener("keyup", function () {
+                textareaElement.value = inputElement.value;
+            });
+        </script>
+
+
+
+        <div id="up-s2t1" class="up-st">사진 첨부</div>
+        <div id="s1"></div>
+        <img id="camera-icon" src="/static/img/img3/camera.png">
+        <img id="dot-icon" src="/static/img/img3/camera-dot.png">
+        <div id="s1-num">
+            <span id="s1-num1">0</span><span id="s1-num2">/5</span>
+        </div>
+        <img id="square1" src="/static/img/img3/square1.png">
+        <div id="square1-text">대표사진</div>
+        <img id="square2" src="/static/img/img3/square2.png">
+        <img id="square3" src="/static/img/img3/square3.png">
+        <img id="square4" src="/static/img/img3/square4.png">
+        <img id="rbtn" src="/static/img/img3/rbtn.png">
+        <img id="x1" src="/static/img/img3/x.png">
+        <img id="x2" src="/static/img/img3/x.png">
+        <img id="x3" src="/static/img/img3/x.png">
+
+
+
+        <div id="up-s3t1" class="up-st">책 분야</div>
+        <div id="s3-btn-container">
+            <div class="s3-btn" id="s3-btn1">소설/시</div>
+            <div class="s3-btn">인문</div>
+            <div class="s3-btn">사회</div>
+            <div class="s3-btn">역사</div>
+            <div class="s3-btn">예술</div>
+            <div class="s3-btn">과학</div>
+            <div class="s3-btn">경제 경영</div>
+        </div>
+
+
+
+        <div id="up-s4t1" class="up-st">책 제목</div>
+        <input id="up-s4b1" placeholder="20자 이내로 작성해주세요.">
+        <label for="id_bookTitle">책 제목</label>
+        <textarea name="bookTitle" id="id_bookTitle"></textarea>
+        <script>
+            // 첫 번째 코드의 입력 요소와 두 번째 코드의 요소를 가져옵니다.
+            const inputElement2 = document.getElementById("up-s4b1");
+            const textareaElement2 = document.getElementById("id_bookTitle");
+            // 첫 번째 코드의 입력값이 변경될 때마다 두 번째 코드에 복사합니다.
+            inputElement2.addEventListener("keyup", function () {
+                textareaElement2.value = inputElement2.value;
+            });
+        </script>
+
+        <div id="up-s5t1" class="up-st">책 지은이</div>
+        <input id="up-s5b1" placeholder="20자 이내로 작성해주세요.">
+        <label for="id_bookAuthor">책 지은이</label>
+        <textarea name="bookAuthor" id="id_bookAuthor"></textarea>
+        <script>
+            // 첫 번째 코드의 입력 요소와 두 번째 코드의 요소를 가져옵니다.
+            const inputElement3 = document.getElementById("up-s5b1");
+            const textareaElement3 = document.getElementById("id_bookAuthor");
+            // 첫 번째 코드의 입력값이 변경될 때마다 두 번째 코드에 복사합니다.
+            inputElement3.addEventListener("keyup", function () {
+                textareaElement3.value = inputElement3.value;
+            });
+        </script>
+
+        <div id="up-s6t1" class="up-st">상세 내용</div>
+        <input id="up-s6b1" placeholder="200자 이내로 작성해주세요.">
+        <label for="id_content">상세 내용</label>
+        <textarea name="content" id="id_content" cols="30" rows="10"></textarea>
+        <script>
+            // 첫 번째 코드의 입력 요소와 두 번째 코드의 요소를 가져옵니다.
+            const inputElement4 = document.getElementById("up-s6b1");
+            const textareaElement4 = document.getElementById("id_content");
+            // 첫 번째 코드의 입력값이 변경될 때마다 두 번째 코드에 복사합니다.
+            inputElement4.addEventListener("keyup", function () {
+                textareaElement4.value = inputElement4.value;
+            });
+        </script>
+
+
+        <div id="up-s7t1" class="up-st">독서 채팅방</div>
+        <div id="s7-btn-container">
+            <div class="s7-btn" id="s7-btn1">공개</div>
+            <div class="s7-btn">비공개</div>
+
+        </div>
+        <div id="select-btn-container">
+            <button type="submit">업로드</button>
+            <button>나가기</button>
+        </div>
+    </div>
+    <script>
+        includeHTML();
+    </script>
+    
+</body>
+
+
+</html>
+</form>
+{% endblock %}
+{% include "footer.html" %}

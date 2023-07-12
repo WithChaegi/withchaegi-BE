@@ -1,0 +1,26 @@
+{% extends 'base2.html' %}
+{% block title %}특정 독서모임 확인{% endblock %}
+
+{% block content %}
+<h1>특정 독서모임 확인</h1>
+<div>
+    {{club.group_name}}<br>
+    {{club.book_photo}}<br>
+    {{club.book_title}}<br>
+    {{club.book_author}}<br>
+    {{club.regularity}}<br>
+    {{club.date}}<br>
+    {{club.time}}<br>
+    {{club.district_location}}<br>
+    {{club.dong_location}}<br>
+    {{club.full_address}}<br>
+    {{club.discussion_field}}<br>
+    {{club.discussion_keywords}}<br>
+    {{club.min_members}}<br>
+    {{club.max_members}}<br>
+    {{club.applied_members}}<br>
+    {{club.club_details}}<br>
+    {{club.likes}}<br>
+    <br>
+</div>
+{% endblock %}

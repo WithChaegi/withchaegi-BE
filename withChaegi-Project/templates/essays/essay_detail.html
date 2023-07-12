@@ -1,0 +1,62 @@
+{% include "header.html" %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>채기랑</title>
+    <link rel="stylesheet" href="/static/css/post.css">
+    <link rel="stylesheet" href="/static/css/header.css">
+    <link rel="stylesheet" href="/static/css/footer.css">
+    <script src="/static/js/includeHTML.js"></script>
+</head>
+
+<body>
+    <!-- <div include-html="header.html"></div> -->
+    <div id="review-box"></div>
+    <img id="review-img" src="/static/img/img3/post1.png">
+    <div id="review-text1">{{ essay.essay_title }}</div>
+    <div id="review-text2">{{ essay.book_title }} / {{ essay.book_author}}</div>
+    <img id="review-user" src="/static/img/img3/user.png">
+    <div id="review-text3">{{ essay.writer }}</div>
+    <div id="review-text4">{{ essay.created_at|date:"Y.m.d" }}</div>
+    <div id="review-text5">{{ essay.essay_content }}</div>
+    
+    
+    <div id="comment">댓글</div>
+    <img id="cuser1" src="/static/img/img3/user2.png">
+    
+    <!-- <img id="cuser3" src="/static/img/img3/user2.png"> -->
+    <div id="cbox1"></div>
+    
+    <!-- <div id="cbox3"></div> -->
+    
+    <!-- <div id="creator2">알파카</div> -->
+    
+    <!-- <div id="date2">2023.05.18</div> -->
+    <div id="cbtn1">등록</div>
+    <div id="ctext1">해당 게시물에 대한 00님의 생각을 적어주세요. 책에 대해 서로의 생각을 주고받는 건
+        곧 나의 세계를 확장하는 거니까요!</div>
+    {% for comment in essay.comment_set.all%}
+        <div style="margin-bottom: 10px;">
+            <img id="cuser2" src="/static/img/img3/user2.png">
+            <div id="cbox2"></div>
+            <div id="creator1">{{ comment.writer }}</div>
+            <div id="date1">{{ comment.created_at }}</div>    
+            <div id="ctext2">{{ comment.comment_content }}</div>
+        </div>
+    {% endfor %}
+
+
+
+    <!-- <div id="ctext3">타국에서 살아가는 재외동포들의 삶의 애환이 잘 느껴져서 읽는 내내 슬픈 마음이었습니다. </div>-->
+    <script>
+        includeHTML();
+    </script>
+</body>
+</html>
+
+{% include "footer.html" %}

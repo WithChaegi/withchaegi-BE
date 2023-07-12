@@ -1,0 +1,94 @@
+{% include "header.html" %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>글 목록 | 채기랑</title>
+    <link rel="stylesheet" href="/static/css/main-board.css">
+    <link rel="stylesheet" href="/static/css/header.css">
+    <link rel="stylesheet" href="/static/css/footer.css">
+    <script src="/static/js/includeHTML.js"></script>
+</head>
+<body>
+
+    <section id="sec1">
+        <div style="display: flex; flex-direction: column; align-items: center; padding-top: 20vh;">
+            <p style="font-size: 1.8rem; font-weight: 500;">전체 게시판</p>
+            <div style="display: flex; flex-direction: row; align-items: center;">
+                <div class="divCategory">
+                    <div>국내</div>
+                    <div>해외</div>
+                </div>
+                <div class="divCategory">
+                    <div>문학</div>
+                    <div>비문학</div>
+                </div>
+            </div>
+            <div class="divCategory">
+                <div>소설/시</div>
+                <div>인문</div>
+                <div>사회</div>
+                <div>역사</div>
+                <div>예술</div>
+                <div>과학</div>
+                <div>경제 경영</div>
+            </div>
+        </div>
+    </section>
+    <section id="sec2">
+        <div class="cWidth">
+            <div id="divBooksV">
+
+                {% block content %}
+                {% for essay in essay_entirelist %}
+
+                <div class="divOneBook" onclick="location.href='/community/{{ essay.id }}'">
+                    {% if essay.book_photo %}
+                        <img src="{{ essay.book_photo.url }}" alt="책 사진">
+                    {% else %}
+                        <img src="http://via.placeholder.com/64x100" alt="책 사진">
+                    {% endif %}
+                    <div>
+                        <div id="divIdDate">
+                            <div id="id">{{ essay.writer }}</div>
+                            <div id="date">{{ essay.created_at|date:"Y.m.d" }}</div>
+                        </div>
+                        <p id="title">{{ essay.essay_title }}</p>
+                        <div id="content">
+                            {{ essay.essay_content }}
+                        </div>
+                        <div id="divLikeReply">
+                            <div>
+                                <img src="/static/img/like.svg" alt="좋아요 이미지">
+                                <p>좋아요</p>
+                                <strong>177</strong>
+                            </div>
+                            <div>
+                                <img src="/static/img/reply.svg" alt="댓글 이미지">
+                                <p>댓글</p>
+                                <strong>{{ essay.comment_set.all.count }}</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- </a> -->
+                {% endfor %}
+                {% endblock %}
+                
+                <div id="divGoFillIn">
+                    <img style="height: 1.4rem;" src="/static/img/pencil.svg" alt="작성하러가기">
+                    작성하러가기
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+        includeHTML();
+    </script>
+</body>
+</html>
+
+{% include "footer.html" %}
