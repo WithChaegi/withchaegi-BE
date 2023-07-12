@@ -1,6 +1,13 @@
 from django.db import models
 # from django.contrib.postgres.fields import ArrayField
 from django.core.validators import MinValueValidator, MaxValueValidator
+import os
+# from django.utils.deconstruct import deconstructible
+
+# @deconstructible
+# class BookClubPhotoPath(object, id):
+#     def __call__(self, instance, filename):
+#         return f"bookclub/{id}.jfif"
 
 # Create your models here.
 class BookClub(models.Model):
@@ -9,14 +16,12 @@ class BookClub(models.Model):
     book_title = models.CharField(verbose_name='책 제목', max_length=30)
     book_author = models.CharField(verbose_name='지은이', max_length=10)
     regularity = models.BooleanField(verbose_name='정기/비정기', default=False) # True(정기)/False(비정기)
-    # date = ArrayField(models.DateField(verbose_name='날짜'), default=list) # (예시) date = ['2023-07-09', '2023-07-16', '2023-07-23']
-    # time = ArrayField(models.TimeField(verbose_name='시간'), default=list) # (예시) time = ['10:00:00', '12:00:00', '13:00:00']
-    # date = models.JSONField(default=list) # JsonField로 변경
-    # time = models.JSONField(default=list)
-    date = models.TextField()
-    time = models.TextField()
-    # date = models.CharField(verbose_name='날짜', max_length=20)
-    # time = models.CharField(verbose_name='시간', max_length=20)
+    date1 = models.CharField(verbose_name='1회 날짜', max_length=20, blank=True)
+    date2 = models.CharField(verbose_name='2회 날짜', max_length=20, blank=True)
+    date3 = models.CharField(verbose_name='3회 날짜', max_length=20, blank=True)
+    date4 = models.CharField(verbose_name='4회 날짜', max_length=20, blank=True)
+    date5 = models.CharField(verbose_name='5회 날짜', max_length=20, blank=True)
+    time = models.CharField(verbose_name='시간', max_length=20)
     city_location = models.CharField(verbose_name='장소(시/도)', max_length=10)
     district_location = models.CharField(verbose_name='장소(구/시/군)', max_length=10)
     dong_location = models.CharField(verbose_name='장소(동/읍/면)', max_length=10)
@@ -28,6 +33,19 @@ class BookClub(models.Model):
     applied_members = models.IntegerField(verbose_name='신청한 멤버수', default=0)
     details = models.CharField(verbose_name='클럽 상세 내용', max_length=400, blank=True)
     likes = models.IntegerField(verbose_name='좋아요 수', default=0)
+
+    # # book_photo 파일명 id값으로 변경
+    # def save(self, *args, **kwargs):
+    #     if self.id and self.book_photo:
+    #         old_file_path = self.book_photo.path
+    #         filename = f"{self.id}.jfif"
+    #         self.book_photo.name = filename
+    #         # new_file_path = os.path.join(os.path.dirname(old_file_path), filename)
+    #         new_file_path = os.path.join('/static/img/', filename)
+    #         os.rename(old_file_path, new_file_path)
+    #         self.save(update_fields=['book_photo'])
+
+    #     super().save(*args, **kwargs)
 
     def validate_member_num(num):
         pass # applied_members가 max_members보다 큰지 판별하기 위해 사용할 예정

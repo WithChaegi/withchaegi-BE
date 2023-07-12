@@ -197,5 +197,5 @@ def apply_club(request, pk): # , user_id
             # return redirect('/club/entire_list')
 
     # return render(request, 'club/club_detail.html')
-    return render(request, 'club/main-detail.html')
+    return render(request, 'club/main-club.html')
     # return redirect('/club/entire_list')

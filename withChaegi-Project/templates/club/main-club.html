@@ -1,4 +1,4 @@
-{% include 'club/header.html' %}
+{% include 'header.html' %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,7 +21,7 @@
         </div>
         <div class="cWidth" id="divBanner">
             <p style="text-align: center; font-size: 4rem; font-weight: 700; margin-top: 14vh;">내 주변 근처에서<br>독서 친구 만나보러 가요</p>
-            <div>독서클럽 만들기</div>
+            <div onclick="location.href='/club/create'">독서클럽 만들기</div>
         </div>
     </section>
     <section id="sec2" style="display: flex; flex-direction: column; align-items: center;">
@@ -140,4 +140,4 @@
     </script>
 </body>
 </html>
-{% include 'club/footer.html' %}
+{% include 'footer.html' %}

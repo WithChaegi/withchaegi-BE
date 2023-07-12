@@ -4,7 +4,8 @@ from .views import essay_list_view, essay_main_view, essay_entirelist_view, essa
 app_name = 'essays'
 
 urlpatterns = [
-    path('', essay_list_view, name='essay-list'),
+    # path('', essay_main_view, name='essay-list'),
+    path('', essay_main_view, name='essay-main'),
     path('main', essay_main_view, name='essay-main'),
     path('entirelist', essay_entirelist_view, name='essay-entirelist'),
     path('popularlist', essay_popularlist_view, name='essay-popularlist'),
