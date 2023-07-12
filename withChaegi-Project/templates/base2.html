@@ -1,3 +1,4 @@
+{% include 'header.html' %}
 {% load static %}
 <!DOCTYPE html>
 <html lang="ko">
@@ -7,10 +8,9 @@
 </head>
 <body class="container">
     <div>
-        {% include 'club/header.html' %}
         {% block content %}
         {% endblock %}
-        {% include 'club/footer.html' %}
     </div>
 </body>
 </html>
+{% include 'footer.html' %}
