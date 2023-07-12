@@ -3,6 +3,7 @@
 html{
     font-size:62.5%;
     font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 500;
 }
 
 div,p,input{
@@ -49,6 +50,7 @@ body{
     border: 2px solid #2D4A91;
     border-radius: 22px;
     padding: 0 1vw 0 1vw;
+    font-size: 1.4rem;
 }:focus{
     outline: none;
 }
@@ -65,16 +67,23 @@ body{
     margin-top: 7vh;
     margin-bottom: 8vh;
     border-radius: 10px;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     font-weight: 700;
     line-height: 6vh;
     text-align: center;
     word-break: keep-all;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+#divBanner > div:hover{
+    background-color: #da7203;
 }
 
 #divBooksH{
     display: flex;
     flex-direction: row;
+    margin-bottom: 5vh;
+    gap: 1vw;
 }
 
 #divBooksH > .divOneBook{
@@ -87,22 +96,60 @@ body{
     border-radius: 12px;
     background: rgba(255, 251, 251, 0.20);
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
 }
-#divBooksH > .divOneBook > img{
+#divBooksH > .divOneBook:hover {
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+    transform: translateY(-3px);
+}
+#divBooksH > .divOneBook:active{
+    background-color: rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.3);
+    transform: translateY(3px);
+}
+
+#divBooksH > .divOneBook.default #rank{
+    display: none;
+}
+#divBooksH > .divOneBook.popular #rank{
+    display: block;
+}
+  
+#divBooksH > .divOneBook > #divBookMap1{
+    display: flex;
+    position: relative;
     height: 16vw;
     min-height: 210px;
     border-radius: 12px;
+    overflow: hidden;
 }
-#divBooksH > .divOneBook > div{
+#divBooksH > .divOneBook > #divBookMap1 #like{
+    position: absolute;
+    top: 5%;
+    right: 5%;
+}
+#divBooksH > .divOneBook > #divBookMap1 #rank{
+    position: absolute;
+    bottom: -5%;
+    left: 5%;
+    font-size: 5.5rem;
+    color: white;
+    font-weight: 800;
+    -webkit-text-stroke: 3px #F88103;
+}
+#divBooksH > .divOneBook > #divBookMap2{
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     flex-grow: 1;
     padding: 6px 10px 6px 10px;
 }
+
 #divBooksH > .divOneBook #title{
     font-size: 1rem;
     font-weight: 700;
+    flex-grow: 0.5;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -128,37 +175,80 @@ body{
     font-weight: 500;
 }
 
+#sec2{
+    display: flex; 
+    flex-direction: column; 
+    align-items: center;
+    margin-bottom: 10vh;
+}
+
 #sec2 #div1{
     display: flex;
     flex-direction: row;
-    width: 130px;
-    justify-content: space-between;
+    gap: 10px;
     margin-top: 10vh;
 }
-#sec2 #div1 > div{
+.radioForm input[type=radio] + label{
     width: 60px;
     height: 40px;
-    font-size: 1.4rem;
-    background-color: #F88103;
+    font-size: 1.6rem;
+    border: 1px solid #F88103;
+    background: #FFF;
     border-radius: 24px;
     text-align: center;
     line-height: 40px;
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+}
+.radioForm label{
+    display: block;
+}
+.radioForm input[type=radio] {
+    display: none;
+}
+/* Checked */
+.radioForm input[type=radio]:checked + label{
+    background: #F88103;
+    border-radius: 24px;
 }
 
 #sec2 #div2{
-    width: 300px;
-    justify-content: space-between;
+    gap: 10px;
     margin-top: 4vh;
     margin-bottom: 6vh;
 }
 #sec2 #div2 > div{
-    width: 50px;
-    height: 25px;
-    font-size: 1.2rem;
+    height: 35px;
+    font-size: 1.4rem;
+    background-color: #F88103;
+    border: 1px solid #F88103;
+    border-radius: 24px;
+    text-align: center;
+    line-height: 35px;
+    padding-left: 10px;
+    padding-right: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+#sec2 #div2 > div:active{
+    background-color: #F88103;
+}
+
+#sec2 #div2 > select{
+    height: 35px;
+    font-size: 1.4rem;
     background-color: #ffffff00;
     border: 1px solid #F88103;
     border-radius: 24px;
     text-align: center;
-    line-height: 25px;
-    padding: 2px;
+    line-height: 35px;
+    padding-left: 5px;
+    padding-right: 20px;
+    background: url('/static/img/arrow_bottom.svg') calc(95% - 5px) no-repeat;
+    background-size: 10px;
+    -o-appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    cursor: pointer;
 }

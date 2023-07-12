@@ -123,12 +123,27 @@ body{
     width: 42%;
     height: 4.5vh;
     background-color: #F88103;
+    border: 2px solid #F88103;
     margin: 0 auto;
     margin-top: 4vh;
     border-radius: 100px;
-    font-family: 'Roboto', sans-serif;
     font-size: 1.2rem;
     color: white;
     font-weight: 500;
     line-height: 4.5vh;
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+}
+#btnLoginOrSignup:hover {
+    box-shadow: 0px 0 20px rgba(248, 130, 3, 0.528);
+}
+#btnLoginOrSignup:active{
+    background-color: rgba(248, 130, 3, 0.528);
+    box-shadow: 0px 5px 20px rgba(248, 130, 3, 0.528);
+    transform: translateY(3px);
+}
+#btnLoginOrSignup:active{
+    background-color: #F88103;
+    box-shadow: 0px 5px 20px #f882035a;
+    transform: translateY(3px);
 }
