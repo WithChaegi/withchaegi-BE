@@ -90,7 +90,7 @@
                             <div id="id">{{ essay.writer }}</div>
                             <div id="date">{{ essay.created_at|date:"Y.m.d" }}</div>
                         </div>
-                        <p id="title">{{ essay.essay_title }}</p>
+                        <p id="title">{{ essay.essay_title|truncatechars:35 }}</p>
                         <div id="content">
                             {{ essay.essay_content|truncatechars:155 }}
                         </div>
@@ -98,7 +98,7 @@
                             <div>
                                 <img src="/static/img/like.svg" alt="좋아요 이미지">
                                 <p>좋아요</p>
-                                <strong>177</strong>
+                                <strong>{{ essay.essay_likes }}</strong>
                             </div>
                             <div>
                                 <img src="/static/img/reply.svg" alt="댓글 이미지">

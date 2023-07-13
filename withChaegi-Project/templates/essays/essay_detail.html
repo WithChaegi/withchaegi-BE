@@ -45,7 +45,7 @@
             <img id="cuser2" src="/static/img/img3/user2.png">
             <div id="cbox2"></div>
             <div id="creator1">{{ comment.writer }}</div>
-            <div id="date1">{{ comment.created_at }}</div>    
+            <div id="date1">{{ comment.created_at|date:"Y.m.d" }}</div>    
             <div id="ctext2">{{ comment.comment_content }}</div>
         </div>
     {% endfor %}

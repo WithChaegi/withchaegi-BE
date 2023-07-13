@@ -26,9 +26,15 @@ def essay_list_view(request):
 def essay_main_view(request):
     # essay_list = Essay.objects.all() # Essay 전체 데이터 조회
     essay_entirelist = Essay.objects.all().order_by('-created_at')[:3] # 최신순 정렬
-    # essay_list = Essay.objects.all().order_by('-essay_likes') # 인기순 정렬
+    essay_popularlist1 = Essay.objects.all().order_by('-essay_likes')[:1]
+    essay_popularlist2 = Essay.objects.all().order_by('-essay_likes')[1:2]
+    essay_popularlist3 = Essay.objects.all().order_by('-essay_likes')[2:3]
+    # essay_popularlist = Essay.objects.all().order_by('-essay_likes') # 인기순 정렬
     context = {
-        'essay_entirelist' : essay_entirelist
+        'essay_entirelist' : essay_entirelist,
+        'essay_popularlist1' : essay_popularlist1,
+        'essay_popularlist2' : essay_popularlist2,
+        'essay_popularlist3' : essay_popularlist3
     }
     return render(request, 'essays/essay_main.html', context)
 
@@ -41,8 +47,8 @@ def essay_entirelist_view(request):
     return render(request, 'essays/essay_entirelist.html', context)
 
 def essay_popularlist_view(request):
-    essay_popularlist = Essay.objects.all().order_by('-created_at') # 최신순 정렬
-    # essay_list = Essay.objects.all().order_by('-essay_likes') # 인기순 정렬
+    # essay_popularlist = Essay.objects.all().order_by('-created_at') # 최신순 정렬
+    essay_popularlist = Essay.objects.all().order_by('-essay_likes') # 인기순 정렬
     context = {
         'essay_popularlist' : essay_popularlist
     }
