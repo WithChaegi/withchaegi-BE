@@ -21,10 +21,10 @@
         </div>
         <div class="cWidth" id="divBanner">
             <p style="text-align: center; font-size: 4rem; font-weight: 700; margin-top: 14vh;">내 주변 근처에서<br>독서 친구 만나보러 가요</p>
-            <div onclick="location.href='/club/create'">독서클럽 만들기</div>
+            <div>독서클럽 만들기</div>
         </div>
     </section>
-    <section id="sec2" style="display: flex; flex-direction: column; align-items: center;">
+    <section id="sec2">
         <div id="div1" style="display: flex; flex-direction: row;">
             <div class="radioForm">
                 <input type="radio" name="option" id="allOption" value="all" checked>
@@ -63,23 +63,34 @@
                 <option value="1">최신순</option>
             </select>
         </div>
-        {% for club in clubs %}
+
+    {% widthratio clubs|length 4 1 as range %}
+    {% for i in "x"|rjust:range %}
+    <p>{{ range }}</p> <!-- i 값을 출력하여 확인 -->
         <div id="divBooksH">
-            {% for _ in 'xxxx' %}
-                <div class="divOneBook" onclick="location.href='/club/{{ club.club_id }}'">
-                    <img src="/media/bookclub/{{ club.club_id }}.jfif" alt="">
-                    <div>
-                        <p id="book_title">{{ club.book_title }}</p>
-                        <div id="divPlaceDate">
-                            <div id="district_location">{{ club.district_location }}</div>
-                            <div id="date">{{club.date1}}</div>
+            {% widthratio i 1 4 as start %}
+            {% with end=start|add:4 %}
+                    {% for club in clubs|slice:"start:end" %}
+                        <div class="divOneBook default" onclick="location.href='/club/{{ club.club_id }}'">
+                            <div id="divBookMap1">
+                                <img id="book" src="/media/bookclub/{{ club.club_id }}.jfif" alt="">
+                                <img id="like" src="/static/img/likeEmpty.svg" alt="하트">
+                                <div id="rank">1</div>
+                            </div>
+                            <div id="divBookMap2">
+                                <p id="title">{{ club.book_title }}</p>
+                                <div id="divPlaceDate">
+                                    <div id="place">{{ club.district_location }}</div>
+                                    <div id="date">{{ club.date1 }}</div>
+                                </div>
+                                <p id="info">첫 모임 {{ club.date1 }}(목) {{ club.time }}</p>
+                            </div>
                         </div>
-                        <p id="info">첫 모임 {{club.date1}}(목) {{ club.time }}</p>
-                    </div>
-                </div>
-            {% endfor %}
+                    {% endfor %}
+            {% endwith %}
         </div>
-        {% endfor %}
+    {% endfor %}
+
     </section>
     <script>
         includeHTML();
@@ -89,6 +100,19 @@
         let peopleBtn = $('#peopleBtn')
         let placeBtn = $('#placeBtn')
         let dateBtn = $('#dateBtn')
+
+        // 인기 클릭시 순위 나옴
+        $(document).ready(function() {
+            $('.radioForm input[type="radio"]').change(function() {
+                if ($('#popularOption').is(':checked')) {
+                    $('.divOneBook').removeClass('default');
+                    $('.divOneBook').addClass('popular');
+                } else {
+                    $('.divOneBook').removeClass('popular');
+                    $('.divOneBook').addClass('default');
+                }
+            });
+        });
 
         // 기본순 클릭시 카테고리 초기화
         resetBtn.click(function() {

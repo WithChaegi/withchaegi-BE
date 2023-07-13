@@ -159,6 +159,7 @@ body{
     border-radius: 12px;
 }
 .divBestOneBook > div{
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
     padding: 0 3vw 20px 3vw;
@@ -201,6 +202,7 @@ body{
     border-radius: 12px;
 }
 .divOneBook > div{
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
     padding: 0 3vw 20px 3vw;
@@ -224,7 +226,6 @@ body{
     margin-left: 5px;
 }
 #title{
-    min-width: 370px;
     font-size: 2rem;
     font-weight: 700;
     margin-bottom: 1.4vh;
@@ -233,13 +234,13 @@ body{
     word-break:break-all;
 }
 #content{
-    min-width: 370px;
-    flex-grow: 1;
+    max-height: 1vh;
     font-size: 1.2rem;
     font-weight: 400;
     margin-bottom: 10px;
-    white-space: normal;
-    word-break: break-all;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 #divLikeReply{

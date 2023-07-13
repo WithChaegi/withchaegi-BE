@@ -70,7 +70,7 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-image: url('/assets/img/background-main-detail.png');
+    background-image: url('/static/img/background-main-detail.png');
     background-repeat : no-repeat;
     background-size : cover;
 }
@@ -83,12 +83,10 @@ body{
 }
 
 #sec2{
-    background-color: #FFF;
-    align-items: flex-start;
-    width: 60vw;
-    margin: 0 auto;
     display: flex;
     flex-direction: column;
+    width: 60vw;
+    align-self: center;
     margin-top: 10vh;
 }
 
@@ -204,7 +202,7 @@ body{
     background: #FFF;
     box-shadow: 0px 4px 30px 0px rgba(0, 0, 0, 0.10);
     border: 0;
-    background: url('/assets/img/arrow_bottom.svg') calc(95% - 5px) no-repeat;
+    background: url('/static/img/arrow_bottom.svg') calc(95% - 5px) no-repeat;
     background-size: 10px;
 }
 
