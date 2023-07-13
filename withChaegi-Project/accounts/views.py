@@ -28,3 +28,8 @@ def login_view(request):
             return redirect('main')
         else:
             return render(request, 'accounts/login.html', {'form': form})
+        
+def logout_view(request):
+    if request.user.is_authenticated:
+        logout(request)
+    return redirect('main')
