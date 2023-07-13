@@ -47,8 +47,8 @@ def essay_entirelist_view(request):
     return render(request, 'essays/essay_entirelist.html', context)
 
 def essay_popularlist_view(request):
-    essay_popularlist = Essay.objects.all().order_by('-created_at') # 최신순 정렬
-    # essay_list = Essay.objects.all().order_by('-essay_likes') # 인기순 정렬
+    # essay_popularlist = Essay.objects.all().order_by('-created_at') # 최신순 정렬
+    essay_popularlist = Essay.objects.all().order_by('-essay_likes') # 인기순 정렬
     context = {
         'essay_popularlist' : essay_popularlist
     }

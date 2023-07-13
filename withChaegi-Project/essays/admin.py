@@ -11,7 +11,7 @@ class CommentInline(admin.StackedInline):
 
 @admin.register(Essay)
 class PostModelAdmin(admin.ModelAdmin):
-    list_display = ('id', 'essay_title', 'writer', 'book_title', 'book_author', 'essay_content', 'created_at', 'view_count')
+    list_display = ('id', 'essay_title', 'writer', 'book_title', 'book_author', 'essay_content', 'created_at', 'essay_likes')
     #search_fields = ('book_title')
     inlines = [CommentInline]
     readonly_fields = ('created_at', )
