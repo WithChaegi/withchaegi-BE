@@ -33,6 +33,9 @@ class BookClub(models.Model):
     applied_members = models.IntegerField(verbose_name='신청한 멤버수', default=0)
     details = models.CharField(verbose_name='클럽 상세 내용', max_length=400, blank=True)
     likes = models.IntegerField(verbose_name='좋아요 수', default=0)
+    big_category=models.CharField(verbose_name='카테고리1', max_length=10, blank=True)
+    middle_category=models.CharField(verbose_name='카테고리2', max_length=10, blank=True)
+    small_category=models.CharField(verbose_name='카테고리3', max_length=10, blank=True)
 
     # # book_photo 파일명 id값으로 변경
     # def save(self, *args, **kwargs):

@@ -8,11 +8,6 @@ import datetime
 
 q = Q()
 
-def index(request):
-    temp_list = [0,0,0,0]
-    context={"fourloop":temp_list}
-    return render(request,'main-club.html',context)
-
 # 책분야, 인원, 장소, 일시별로 필터링 코드
 def filtering(request):
     discussion_field = request.GET.getlist('discussion_field', None)
@@ -93,6 +88,7 @@ def club_detail(request, pk):
         club = get_object_or_404(BookClub, id=pk)
 
         club_data = {
+            'club_id': club.id,
             'group_name': club.group_name,
             'book_photo': club.book_photo,
             'book_title': club.book_title,
@@ -113,7 +109,8 @@ def club_detail(request, pk):
             'max_members': club.max_members,
             'applied_members': club.applied_members,
             'club_details': club.details,
-            'likes': club.likes
+            'likes': club.likes,
+            'remaining': club.max_members - club.applied_members
         }
 
         context = {'club': club_data}
@@ -172,7 +169,7 @@ def create_club(request):
     else:
         form = BookClubBaseForm()
     # return HttpResponse("Invalid form data or request method.")
-    return render(request, 'club/create.html', {'form': form})
+    return render(request, 'club/book_apply.html', {'form': form})
 
 # 독서 모임 신청
 def apply_club(request, pk): # , user_id

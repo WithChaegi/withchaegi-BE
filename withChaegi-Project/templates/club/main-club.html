@@ -65,9 +65,9 @@
         </div>
         {% for club in clubs %}
         <div id="divBooksH">
-            {% for _ in fourloop %}
+            {% for _ in 'xxxx' %}
                 <div class="divOneBook" onclick="location.href='/club/{{ club.club_id }}'">
-                    <img src="/static/img/dallergut.jfif" alt="">
+                    <img src="/media/bookclub/{{ club.club_id }}.jfif" alt="">
                     <div>
                         <p id="book_title">{{ club.book_title }}</p>
                         <div id="divPlaceDate">
