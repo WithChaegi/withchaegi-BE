@@ -5,7 +5,7 @@
         <!-- {% csrf_token %} -->
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,87 +24,87 @@
             <div id="title">내가 직접 원하는 독서클럽을 구성해볼까요?</div>
     </section>
 
-    <div id="sec2">
+    <section id="sec2">
 
-    <div id="title-box">
-        <div class="divLeft">감상문 제목</div>
-        <div class="divRight">
-            <textarea placeholder="20자 이내로 작성해주세요" maxlength="20"></textarea>
+        <div id="title-box">
+            <div class="divLeft">감상문 제목</div>
+            <div class="divRight">
+                <textarea placeholder="20자 이내로 작성해주세요" maxlength="20"></textarea>
+            </div>
         </div>
-    </div>
 
-    <div id="picture-box">
-        <div class="divLeft">사진첨부</div>
-        <div class="divRight">
-            <div class="divSquare" id="addPicture">
-            <img src="/static/img/img3/camera.png" alt="camera">
+        <div id="picture-box">
+            <div class="divLeft">사진첨부</div>
+            <div class="divRight">
+                <div class="divSquare" id="addPicture">
+                <img src="/static/img/img3/camera.png" alt="camera">
+            </div>
+            <div id="added" style="display: none; position: relative;">
+                <input type="file" id="imageUpload" style="display:none" accept=".png, .jpg, .jpeg">
+                <img id="preview" src="#" alt="미리보기">
+                <img id="remove" src="/static/img/removeBtn.svg" alt="삭제">
+            </div>
+            </div>
         </div>
-        <div id="added" style="display: none; position: relative;">
-            <input type="file" id="imageUpload" style="display:none" accept=".png, .jpg, .jpeg">
-            <img id="preview" src="#" alt="미리보기">
-            <img id="remove" src="/static/img/removeBtn.svg" alt="삭제">
+    
+        <div id="discuss-box">
+            <div class="divLeft">토론분야</div>
+            <div class="divRight">
+            <div class="radioDiscuss">
+                <input type="radio" name="discuss" id="poemOption" value="poem">
+                <label for="poemOption">소설/시</label>
+            </div>
+            <div class="radioDiscuss">
+                <input type="radio" name="discuss" id="humanOption" value="human">
+                <label for="humanOption">인문</label>
+            </div>
+            <div class="radioDiscuss">
+                <input type="radio" name="discuss" id="societyOption" value="society">
+                <label for="societyOption">사회</label>
+            </div>
+            <div class="radioDiscuss">
+                <input type="radio" name="discuss" id="historyOption" value="history">
+                <label for="historyOption">역사</label>
+            </div>
+            <div class="radioDiscuss">
+                <input type="radio" name="discuss" id="artOption" value="art">
+                <label for="artOption">예술</label>
+            </div>
+            <div class="radioDiscuss">
+                <input type="radio" name="discuss" id="scienceOption" value="science">
+                <label for="scienceOption">과학</label>
+            </div>
+            <div class="radioDiscuss">
+                <input type="radio" name="discuss" id="economyOption" value="economy">
+                <label for="economyOption">경제 경영</label>
+            </div>
+            </div>
         </div>
-        </div>
-    </div>
-   
-    <div id="discuss-box">
-        <div class="divLeft">토론분야</div>
-        <div class="divRight">
-        <div class="radioDiscuss">
-            <input type="radio" name="discuss" id="poemOption" value="poem">
-            <label for="poemOption">소설/시</label>
-        </div>
-        <div class="radioDiscuss">
-            <input type="radio" name="discuss" id="humanOption" value="human">
-            <label for="humanOption">인문</label>
-        </div>
-        <div class="radioDiscuss">
-            <input type="radio" name="discuss" id="societyOption" value="society">
-            <label for="societyOption">사회</label>
-        </div>
-        <div class="radioDiscuss">
-            <input type="radio" name="discuss" id="historyOption" value="history">
-            <label for="historyOption">역사</label>
-        </div>
-        <div class="radioDiscuss">
-            <input type="radio" name="discuss" id="artOption" value="art">
-            <label for="artOption">예술</label>
-        </div>
-        <div class="radioDiscuss">
-            <input type="radio" name="discuss" id="scienceOption" value="science">
-            <label for="scienceOption">과학</label>
-        </div>
-        <div class="radioDiscuss">
-            <input type="radio" name="discuss" id="economyOption" value="economy">
-            <label for="economyOption">경제 경영</label>
-        </div>
-        </div>
-    </div>
 
-    <div class="book-title">
-        <div class="divLeft" >책 제목</div>
-        <div class="divRight">
-        <input placeholder="책 제목을 작성해주세요"></input>
+        <div class="book-title">
+            <div class="divLeft" >책 제목</div>
+            <div class="divRight">
+            <input placeholder="책 제목을 작성해주세요"></input>
+            </div>
+            
         </div>
-        
-    </div>
 
-    <div class="book-title">
-        <div class="divLeft">책 지은이</div>
-        <div class="divRight">
-        <input placeholder="책을 쓴 지은이를 작성해주세요"></input>
+        <div class="book-title">
+            <div class="divLeft">책 지은이</div>
+            <div class="divRight">
+            <input placeholder="책을 쓴 지은이를 작성해주세요"></input>
+            </div>
         </div>
-    </div>
 
-    <div id="detail">
-        <div class="divLeft">상세내용</div>
-        <div class="divRight">
-        <textarea placeholder="이 책에 대해서 읽고 난 후 나의 감상평에 대해서 적어 보아요" maxlength="200"></textarea>
+        <div id="detail">
+            <div class="divLeft">상세내용</div>
+            <div class="divRight">
+            <textarea placeholder="이 책에 대해서 읽고 난 후 나의 감상평에 대해서 적어 보아요" maxlength="200"></textarea>
+            </div>
         </div>
-    </div>
     </section>
 
-    <section id="sec3">
+    <section id="sec3"> 
     <div>
         <div id="cbtn1">업로드</div>
         <div id="cbtn1">나가기</div>
@@ -145,52 +145,52 @@
         });
 
         $(document).ready(function() {
-          var timeBoxCount = $(".divSquare#time-box").length;
-          console.log(timeBoxCount)
-
-          $("#add-time-box").click(function() {
+            var timeBoxCount = $(".divSquare#time-box").length;
             console.log(timeBoxCount)
-            if (timeBoxCount < 5) {
-              var clonedTimeBox = $("#time-box").clone();
-              clonedTimeBox.find("input, select").val(""); // Reset input/select values in cloned time-box
-              clonedTimeBox.find("#remove-btn").css("display", "inline-block");
-              clonedTimeBox.insertAfter("#time-box");
 
-              timeBoxCount++;
+            $("#add-time-box").click(function() {
+                console.log(timeBoxCount)
+                if (timeBoxCount < 5) {
+                    var clonedTimeBox = $("#time-box").clone();
+                    clonedTimeBox.find("input, select").val(""); // Reset input/select values in cloned time-box
+                    clonedTimeBox.find("#remove-btn").css("display", "inline-block");
+                    clonedTimeBox.insertAfter("#time-box");
 
-              if (timeBoxCount >= 5) {
-                $("#add-time-box").hide();
-              }
-            }
-          });
+                    timeBoxCount++;
 
-          // remove-btn 클릭 시 해당 time-box-item 삭제
-          $(document).on("click", "#remove-btn", function() {
-            console.log(timeBoxCount)
-            if (timeBoxCount >= 2) {
-              $(this).closest("#time-box").remove(); // 가장 가까운 상위 time-box-item 요소를 찾아 삭제
+                    if (timeBoxCount >= 5) {
+                        $("#add-time-box").hide();
+                    }
+                }
+            });
 
-              // 남은 time-box-item 개수 확인
-              timeBoxCount--;
+            // remove-btn 클릭 시 해당 time-box-item 삭제
+            $(document).on("click", "#remove-btn", function() {
+                console.log(timeBoxCount)
+                if (timeBoxCount >= 2) {
+                    $(this).closest("#time-box").remove(); // 가장 가까운 상위 time-box-item 요소를 찾아 삭제
 
-              // time-box-item 개수가 4개 이하면 add-time-box 보이기
-              if (timeBoxCount < 5) {
-                $("#add-time-box").show();
-              }
-            }
-          });
+                // 남은 time-box-item 개수 확인
+                timeBoxCount--;
+
+                // time-box-item 개수가 4개 이하면 add-time-box 보이기
+                if (timeBoxCount < 5) {
+                    $("#add-time-box").show();
+                }
+                }
+            });
         });
 
         const selects = document.querySelectorAll('select');
 
         selects.forEach(select => {
-          select.addEventListener('change', () => {
-              if (select.value == 'none') {
-                  select.style.color = '#C2C2C2';
-              } else {
-                  select.style.color = '#000';
-              }
-          });
+            select.addEventListener('change', () => {
+                if (select.value == 'none') {
+                    select.style.color = '#C2C2C2';
+                } else {
+                    select.style.color = '#000';
+                }
+            });
         });
     </script>
     
