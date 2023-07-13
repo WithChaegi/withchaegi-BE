@@ -90,7 +90,7 @@
                             <div id="id">{{ essay.writer }}</div>
                             <div id="date">{{ essay.created_at|date:"Y.m.d" }}</div>
                         </div>
-                        <p id="title">{{ essay.essay_title }}</p>
+                        <p id="title">{{ essay.essay_title|truncatechars:35 }}</p>
                         <div id="content">
                             {{ essay.essay_content|truncatechars:155 }}
                         </div>
