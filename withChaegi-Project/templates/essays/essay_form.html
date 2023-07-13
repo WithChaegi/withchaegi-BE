@@ -1,8 +1,8 @@
 {% include "header.html" %}
 {% load static %}
 {% block content %}
-<!-- <form action="{% url 'essays:essay-create' %}" method="POST" enctype="multipart/form-data"> -->
-        <!-- {% csrf_token %} -->
+<form action="{% url 'essays:essay-create' %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -29,7 +29,7 @@
         <div id="title-box">
             <div class="divLeft">감상문 제목</div>
             <div class="divRight">
-                <textarea placeholder="20자 이내로 작성해주세요" maxlength="20"></textarea>
+                <textarea name="essay_title" id="id_essay_title" placeholder="20자 이내로 작성해주세요" maxlength="20"></textarea>
             </div>
         </div>
 
@@ -40,7 +40,7 @@
                 <img src="/static/img/img3/camera.png" alt="camera">
             </div>
             <div id="added" style="display: none; position: relative;">
-                <input type="file" id="imageUpload" style="display:none" accept=".png, .jpg, .jpeg">
+                <input type="file" name="image" id="imageUpload" style="display:none" accept=".png, .jpg, .jpeg">
                 <img id="preview" src="#" alt="미리보기">
                 <img id="remove" src="/static/img/removeBtn.svg" alt="삭제">
             </div>
@@ -84,7 +84,7 @@
         <div class="book-title">
             <div class="divLeft" >책 제목</div>
             <div class="divRight">
-            <input placeholder="책 제목을 작성해주세요"></input>
+            <input name="bookTitle" id="id_bookTitle" placeholder="책 제목을 작성해주세요"></input>
             </div>
             
         </div>
@@ -92,22 +92,22 @@
         <div class="book-title">
             <div class="divLeft">책 지은이</div>
             <div class="divRight">
-            <input placeholder="책을 쓴 지은이를 작성해주세요"></input>
+            <input name="bookAuthor" id="id_bookAuthor" placeholder="책을 쓴 지은이를 작성해주세요"></input>
             </div>
         </div>
 
         <div id="detail">
             <div class="divLeft">상세내용</div>
             <div class="divRight">
-            <textarea placeholder="이 책에 대해서 읽고 난 후 나의 감상평에 대해서 적어 보아요" maxlength="200"></textarea>
+            <textarea name="content" id="id_content" placeholder="이 책에 대해서 읽고 난 후 나의 감상평에 대해서 적어 보아요" maxlength="200"></textarea>
             </div>
         </div>
     </section>
 
     <section id="sec3"> 
     <div>
-        <div id="cbtn1">업로드</div>
-        <div id="cbtn1">나가기</div>
+        <button id="cbtn1" type="submit">업로드</button>
+        <button id="cbtn1">나가기</button>
     </div>
     </section>
 
@@ -197,6 +197,6 @@
 </body>
 </html>
 
-<!-- </form> -->
+</form>
 {% endblock %}
 {% include "footer.html" %}
