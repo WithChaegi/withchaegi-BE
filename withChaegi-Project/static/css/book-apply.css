@@ -363,6 +363,7 @@ body{
 #sec3 > div > button{
     width: 10vw;
     background-color: #001853;
+    color: white;
     border-radius: 12px;
     text-align: center;
     padding: 10px 18px;

@@ -210,7 +210,7 @@ body{
 }
 #ctext2{
   flex-grow: 1;
-  height: 13vh;
+  overflow: hidden;
   font-size: 1.3rem;
   border-radius: 12px;
   background: #FFF;

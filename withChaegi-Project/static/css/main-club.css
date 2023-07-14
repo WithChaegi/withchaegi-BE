@@ -124,7 +124,7 @@ body{
     border-radius: 12px;
     overflow: hidden;
 }
-#divBooksH > .divOneBook > #divBookMap1 #book{
+#book{
     width: 100%;
 }
 #divBooksH > .divOneBook > #divBookMap1 #like{

@@ -49,20 +49,21 @@ body{
     width: 50vw;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    gap: 1vw;
     margin-bottom: 3vh;
 }
 
 .cClub1{
-    width: 20vw;
+    width: 22vw;
+    flex-shrink: 0;
     border-radius: 24px;
-    background: #FFF;
+    background: #fff;
     box-shadow: 0px 4px 40px 0px rgba(0, 0, 0, 0.10);
 }
 .cClub2{
-    width: 24vw;
+    flex-grow: 1;
     border-radius: 24px;
-    background: #FFF;
+    background: #fff;
     box-shadow: 0px 4px 40px 0px rgba(0, 0, 0, 0.10);
     padding: 6vh 2vw 5vh 2.5vw ;
 }
@@ -72,6 +73,7 @@ body{
     font-weight: 500;
     margin-bottom: 1.4vh;
 }
+
 #type > div{
     display: flex;
     flex-direction: row;
@@ -113,7 +115,7 @@ body{
 }
 
 #divClub2{
-    width: 17vw;
+    width: 22vw;
     display: flex;
     flex-direction: column;
     padding: 6vh 1vw 1vh 2vw ;

@@ -60,7 +60,7 @@
                     <div class="carousel-item active">
 
                         {% for essay in essay_popularlist1 %}
-                        <div class="divBestOneBook" onClick="location.href='post.html'">
+                        <div class="divBestOneBook" onClick="location.href='/community/{{ essay.id }}'">
                             {% if essay.book_photo %}
                                 <img style="border-radius: 0;"  src="{{ essay.book_photo.url }}" alt="책 사진">
                             {% else %}
@@ -93,7 +93,7 @@
                     </div>
                     <div class="carousel-item">
                         {% for essay in essay_popularlist2 %}
-                        <div class="divBestOneBook" onClick="location.href='post.html'">
+                        <div class="divBestOneBook" onClick="location.href='/community/{{ essay.id }}'">
                             {% if essay.book_photo %}
                                 <img style="border-radius: 0;" src="{{ essay.book_photo.url }}" alt="책 사진">
                             {% else %}
@@ -126,7 +126,7 @@
                     </div>
                     <div class="carousel-item">
                         {% for essay in essay_popularlist3 %}
-                        <div class="divBestOneBook" onClick="location.href='post.html'">
+                        <div class="divBestOneBook" onClick="location.href='/community/{{ essay.id }}'">
                             {% if essay.book_photo %}
                                 <img style="border-radius: 0;"  src="{{ essay.book_photo.url }}" alt="책 사진">
                             {% else %}

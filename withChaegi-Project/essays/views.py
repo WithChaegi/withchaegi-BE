@@ -8,13 +8,16 @@ from django.views.decorators.http import require_POST
 from django.shortcuts import render, get_object_or_404
 
 from .models import Essay
+from bookclub.models import BookClub
 from .models import Comment
 from .forms import CommentForm
 
 def main(request):
+    bookclub_entirelist = BookClub.objects.all()[:4]
     essay_popularlist = Essay.objects.all().order_by('-created_at')[:3] # 최신순 정렬
     # essay_list = Essay.objects.all().order_by('-essay_likes') # 인기순 정렬
     context = {
+        'bookclub_entirelist' : bookclub_entirelist,
         'essay_popularlist' : essay_popularlist
     }
     return render(request, 'main.html', context)

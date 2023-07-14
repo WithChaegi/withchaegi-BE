@@ -32,70 +32,29 @@
             <p id="pMore" onClick="location.href='/club/main'">더보기</p>
         </div>
         <div id="divBooksH">
-            <div class="divOneBook default" onclick="location.href='/club/1'">
+            {% for club in bookclub_entirelist %}
+            <div class="divOneBook default" onclick="location.href='/club/{{club.id}}'">
                 <p class="pHover">자세히 보기</p>
                 <div id="divBookMap1">
-                    <img id="book" src="/static/img/book.png" alt="">
+                    {% if club.book_photo %}
+                        <img width="100%" id="book" src="/media/bookclub/{{ club.id }}.jfif" alt="">
+                    {% endif %}
+                    {% if not club.book_photo %}
+                        <img id="book" src="/media/bookclub/0.jfif" alt="">
+                    {% endif %}
                     <img id="like" src="/static/img/likeEmpty.svg" alt="하트">
-                    <div id="rank">1</div>
+                    <div id="rank"></div>
                 </div>
                 <div id="divBookMap2">
-                    <p id="title">범죄학 연구자와 함께 콘텐츠 사회 문제 짚어보기</p>
+                    <p id="title">{{club.group_name}}</p>
                     <div id="divPlaceDate">
-                        <div id="place">강남</div>
-                        <div id="date">5/18</div>
+                        <div id="place">{{club.dong_location}}</div>
+                        <div id="date">{{club.date1}}</div>
                     </div>
-                    <p id="info">첫 모임 5/18(목) 18:00</p>
+                    <p id="info">첫 모임 {{club.date1}}({{club.weekday1}}) {{club.time}}</p>
                 </div>
             </div>
-            <div class="divOneBook default" onclick="location.href='/club/1'">
-                <p class="pHover">자세히 보기</p>
-                <div id="divBookMap1">
-                    <img id="book" src="/static/img/book.png" alt="">
-                    <img id="like" src="/static/img/likeEmpty.svg" alt="하트">
-                    <div id="rank">1</div>
-                </div>
-                <div id="divBookMap2">
-                    <p id="title">범죄학 연구자와 함께 콘텐츠 사회 문제 짚어보기</p>
-                    <div id="divPlaceDate">
-                        <div id="place">강남</div>
-                        <div id="date">5/18</div>
-                    </div>
-                    <p id="info">첫 모임 5/18(목) 18:00</p>
-                </div>
-            </div>
-            <div class="divOneBook default" onclick="location.href='/club/1'">
-                <p class="pHover">자세히 보기</p>
-                <div id="divBookMap1">
-                    <img id="book" src="/static/img/book.png" alt="">
-                    <img id="like" src="/static/img/likeEmpty.svg" alt="하트">
-                    <div id="rank">1</div>
-                </div>
-                <div id="divBookMap2">
-                    <p id="title">범죄학 연구자와 함께 콘텐츠 사회 문제 짚어보기</p>
-                    <div id="divPlaceDate">
-                        <div id="place">강남</div>
-                        <div id="date">5/18</div>
-                    </div>
-                    <p id="info">첫 모임 5/18(목) 18:00</p>
-                </div>
-            </div>
-            <div class="divOneBook default" onclick="location.href='/club/1'">
-                <p class="pHover">자세히 보기</p>
-                <div id="divBookMap1">
-                    <img id="book" src="/static/img/book.png" alt="">
-                    <img id="like" src="/static/img/likeEmpty.svg" alt="하트">
-                    <div id="rank">1</div>
-                </div>
-                <div id="divBookMap2">
-                    <p id="title">범죄학 연구자와 함께 콘텐츠 사회 문제 짚어보기</p>
-                    <div id="divPlaceDate">
-                        <div id="place">강남</div>
-                        <div id="date">5/18</div>
-                    </div>
-                    <p id="info">첫 모임 5/18(목) 18:00</p>
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </section>
     <section id="sec3">
