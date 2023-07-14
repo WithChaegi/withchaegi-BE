@@ -27,7 +27,7 @@ body{
 
 #divMain{
     width: 55%;
-    height: 80vh;
+    height: 85vh;
     align-self: center;
     margin: 0 auto;
     background-color: rgba(255, 255, 255, 0.70);
@@ -39,15 +39,15 @@ body{
 #pTitle{
     font-size: 3.6rem;
     font-weight: 600;
-    margin-top: 14vh;
+    margin-top: 10vh;
     margin-bottom: 1.5vh;
-    transition: all 0.3s ease 0s;
+    transition: all 0.5s ease 0s;
 }
 #pTitleSub{
     font-size: 1.5rem;
     font-weight: 400;
     color: #726F6F;
-    transition: all 0.3s ease 0s;
+    transition: all 0.5s ease 0s;
 }
 
 #divSelectLogin{
@@ -60,7 +60,7 @@ body{
     box-shadow: 0px 4px 20px 0px rgba(45, 74, 145, 0.25);
     font-size: 1.2rem;
     color: #605C65;
-    margin-top: 8vh;
+    margin-top: 6vh;
 }
 #divSelectLogin > div{
     width: 50%;
@@ -74,16 +74,34 @@ body{
     color: #605C65;
 }
 
-#divIdPw{
+#divSignupInfo{
+    width: 60%;
     display: flex;
     flex-direction: column;
     margin: 0 auto;
     margin-top: 2vh;
-    width: 60%;
     font-family: 'Roboto', sans-serif;
     font-size: 1.2rem;
 }
-#divIdPw input{
+#divSignupInfo > div{
+    display: flex;
+    flex-direction: row;
+    margin-top: 2vh;
+}
+#divSignupInfo .left{
+    width: 20%;
+    text-align: left;
+    padding-top: 1vh;
+    font-size: 1.4rem;
+}
+#divSignupInfo .right{
+    flex-grow: 1;
+    font-size: 1rem;
+    color: #726F6F;
+    text-align: left;
+    line-height: 1.2rem;
+}
+#divSignupInfo input{
     width: 96%;
     height: 4.5vh;
     border: 0px;
@@ -91,22 +109,10 @@ body{
     border-radius: 4px;
     padding: 0 2% 0 2%;
     font-size: 0.8rem;
+    margin-bottom: 0.8vh;
 }
-#divIdPw input:focus{
+#divSignupInfo input:focus{
     outline: 1.5px solid black;
-}
-
-#divFindIdPw{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    font-family: 'Roboto', sans-serif;
-    margin-top: 4vh;
-}
-#divFindIdPw > p{
-    font-size: 1.2rem;
-    font-weight: 400;
-    color: #726F6F;
 }
 
 #btnLoginOrSignup{
