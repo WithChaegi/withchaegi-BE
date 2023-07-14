@@ -14,209 +14,288 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-    <section id="sec1">
-            <div id="title">내가 원하는 독서클럽을 구성해볼까요?</div>
-    </section>
+    <form method="post" action="/club/create">
+        {% csrf_token %}
+        <section id="sec1">
+            <div id="title">내가 직접 원하는 독서클럽을 구성해볼까요?</div>
+        </section>
 
-    <section id="sec2">
+        <section id="sec2">
 
-      <div id="title-box">
-        <div class="divLeft">독서클럽 제목</div>
-        <div class="divRight">
-          <textarea placeholder="12자 이내로 작성해주세요"></textarea>
-        </div>
-      </div>
-
-      <div id="picture-box">
-        <div class="divLeft">사진첨부</div>
-        <div class="divRight">
-            <div class="divSquare">
-              <img src="/static/img/img3/camera.png" alt="camera">
+          <div id="title-box">
+            <div class="divLeft">독서클럽 제목</div>
+            <div class="divRight">
+              <textarea name="club_title" placeholder="12자 이내로 작성해주세요"></textarea>
             </div>
-        </div>
-      </div>
-   
+          </div>
 
-      <div class="book-title">
-        <div class="divLeft" >책 제목</div>
-        <div class="divRight">
-          <input placeholder="책 제목을 작성해주세요"></input>
-        </div>
-        
-      </div>
+          <div id="picture-box">
+            <div class="divLeft">사진첨부</div>
+            <div class="divRight">
+              <div class="divSquare" id="addPicture">
+                <img src="/static/img/img3/camera.png" alt="camera">
+              </div>
+              <div id="added" style="display: none; position: relative;">
+                <input type="file" id="imageUpload" name="book_photo" style="display:none" accept=".png, .jpg, .jpeg">
+                <img id="preview" src="#" alt="미리보기">
+                <img id="remove" src="/static/img/removeBtn.svg" alt="삭제">
+              </div>
+            </div>
+          </div>
+       
 
-      <div class="book-title">
-        <div class="divLeft">책 지은이</div>
-        <div class="divRight">
-          <input placeholder="책을 쓴 지은이를 작성해주세요"></input>
-        </div>
-      </div>
-
-      <div id="clubtime">
-        <div class="divLeft">독서 클럽 일시</div>
-        <div class="divRight">
-          <div class="divSquare" id="time-box">
-            <div id="round">
-              <input type="number" placeholder="N">
-              <p>회차</p>
+          <div class="book-title">
+            <div class="divLeft" >책 제목</div>
+            <div class="divRight">
+              <input name="book_title" placeholder="책 제목을 작성해주세요"></input>
             </div>
             
-            <input type="date"
-              id="date"
-              max="2023.12.31"
-              min="2023.01.01"
-              value="0000-00-00">
-
-            <input type="time"
-              id="time"
-              value="00:00"
-              min="00:00"
-              max="23:59">
           </div>
-          <div class="divSquare">
-            <img src="/static/img/img2/+.png" alt="pluse">
-          </div>
-        </div>
-      </div>
 
-      <div id="clubplace">
-        <div class="divLeft" >독서 클럽 장소</div>
-        <div class="divRight">
-          <select>
-            <option value="none">시/도</option>
-            <option value="1">서울</option>
-            <option value="2">경기도</option>
-            <option value="3">충청도</option>
-            <option value="4">전라도</option>
-            <option value="5">강원도</option>
-            <option value="6">경상도</option>
-            <option value="7">제주도</option>
-          </select>
-          <select>
-            <option value="none">구/시/군</option>
-            <option value="1">연천군</option>
-            <option value="2">포천시</option>
-            <option value="3">가평군</option>
-            <option value="4">양평군</option>
-            <option value="5">여주시</option>
-            <option value="6">이천시</option>
-            <option value="7">광주시</option>
-            <option value="8">용인시</option>
-            <option value="9">안성시</option>
-            <option value="10">평택시</option>
-            <option value="11">화성시</option>
-            <option value="12">수원시</option>
-            <option value="13">파주시</option>
-            <option value="14">양주시</option>
-            <option value="15">의정부시</option>
-            <option value="16">남양주시</option>
-            <option value="17">고양시</option>
-            <option value="18">용인시</option>
-            <option value="19">김포시</option>
-            <option value="20">동두천시</option>
-            <option value="21">하남시</option>
-            <option value="22">광명시</option>
-            <option value="23">성남시</option>
-            <option value="24">안산시</option>
-            <option value="25">안양시</option>
-            <option value="26">시흥시</option>
-            <option value="27">구리시</option>
-            <option value="28">과천시</option>
-            <option value="29">부천시</option>
-            <option value="30">군포시</option>
-          </select>
-          <select>
-            <option value="none">동/읍/면</option>
-            <option value="1">별내면</option>
-            <option value="2">별내동</option>
-            <option value="3">진천읍</option>
-            <option value="4">퇴계원면</option>
-            <option value="5">다산1동</option>
-            <option value="6">다산2동</option>
-            <option value="7">호평동</option>
-            <option value="8">평내동</option>
-            <option value="9">금곡동</option>
-            <option value="10">양정동</option>
-            <option value="11">와부읍</option>
-            <option value="12">화도읍</option>
-            <option value="13">수동면</option>
-            <option value="14">조안면</option>
-            <option value="15">오남읍</option>
-          </select>
-        </div>
-      </div>
-
-      <div id="discuss-box">
-        <div class="divLeft">토론분야</div>
-        <div class="divRight">
-          <div class="radioDiscuss">
-            <input type="radio" name="discuss" id="poemOption" value="poem">
-            <label for="poemOption">소설/시</label>
+          <div class="book-title">
+            <div class="divLeft">책 지은이</div>
+            <div class="divRight">
+              <input name="book_author" placeholder="책을 쓴 지은이를 작성해주세요"></input>
+            </div>
           </div>
-          <div class="radioDiscuss">
-            <input type="radio" name="discuss" id="humanOption" value="human">
-            <label for="humanOption">인문</label>
+
+          <div id="clubtime">
+            <div class="divLeft">독서 클럽 일시</div>
+            <div class="divRight">
+              <div class="divSquare" id="time-box">
+                <div id="round">
+                  <input type="number" name="club_round" placeholder="N">
+                  <p>회차</p>
+                </div>
+                
+                <input type="date"
+                  id="date"
+                  name="club_date"
+                  max="2023-12-31"
+                  min="2023-01-01"
+                  value="">
+
+                <input type="time"
+                  id="time"
+                  name="club_time"
+                  value=""
+                  min="00:00"
+                  max="23:59">
+                
+                <img id="remove-btn" src="/static/img/removeBtn.svg" alt="삭제">
+              </div>
+              <div class="divSquare" id="add-time-box">
+                <img src="/static/img/img2/+.png" alt="pluse">
+              </div>
+            </div>
           </div>
-          <div class="radioDiscuss">
-            <input type="radio" name="discuss" id="societyOption" value="society">
-            <label for="societyOption">사회</label>
+
+          <div id="clubplace">
+            <div class="divLeft" >독서 클럽 장소</div>
+            <div class="divRight">
+              <select name="club_location">
+                <option value="none">시/도</option>
+                <option value="서울">서울</option>
+                <option value="경기도">경기도</option>
+                <option value="충청도">충청도</option>
+                <option value="전라도">전라도</option>
+                <option value="강원도">강원도</option>
+                <option value="경상도">경상도</option>
+                <option value="제주도">제주도</option>
+              </select>
+              <select name="club_district">
+                <option value="none">구/시/군</option>
+                <option value="연천군">연천군</option>
+                <option value="포천시">포천시</option>
+                <option value="가평군">가평군</option>
+                <option value="양평군">양평군</option>
+                <option value="여주시">여주시</option>
+                <option value="이천시">이천시</option>
+                <option value="광주시">광주시</option>
+                <option value="용인시">용인시</option>
+                <option value="안성시">안성시</option>
+                <option value="평택시">평택시</option>
+                <option value="화성시">화성시</option>
+                <option value="수원시">수원시</option>
+                <option value="파주시">파주시</option>
+                <option value="양주시">양주시</option>
+                <option value="의정부시">의정부시</option>
+                <option value="남양주시">남양주시</option>
+                <option value="고양시">고양시</option>
+                <option value="용인시">용인시</option>
+                <option value="김포시">김포시</option>
+                <option value="동두천시">동두천시</option>
+                <option value="하남시">하남시</option>
+                <option value="광명시">광명시</option>
+                <option value="성남시">성남시</option>
+                <option value="안산시">안산시</option>
+                <option value="안양시">안양시</option>
+                <option value="시흥시">시흥시</option>
+                <option value="구리시">구리시</option>
+                <option value="과천시">과천시</option>
+                <option value="부천시">부천시</option>
+                <option value="군포시">군포시</option>
+              </select>
+              <select name="club_town">
+                <option value="none">동/읍/면</option>
+                <option value="별내면">별내면</option>
+                <option value="별내동">별내동</option>
+                <option value="진천읍">진천읍</option>
+                <option value="퇴계원면">퇴계원면</option>
+                <option value="다산1동">다산1동</option>
+                <option value="다산2동">다산2동</option>
+                <option value="호평동">호평동</option>
+                <option value="평내동">평내동</option>
+                <option value="금곡동">금곡동</option>
+                <option value="양정동">양정동</option>
+                <option value="와부읍">와부읍</option>
+                <option value="화도읍">화도읍</option>
+                <option value="수동면">수동면</option>
+                <option value="조안면">조안면</option>
+                <option value="오남읍">오남읍</option>
+              </select>
+            </div>
           </div>
-          <div class="radioDiscuss">
-            <input type="radio" name="discuss" id="historyOption" value="history">
-            <label for="historyOption">역사</label>
+
+          <div id="discuss-box">
+            <div class="divLeft">토론분야</div>
+            <div class="divRight">
+              <div class="radioDiscuss">
+                <input type="radio" name="discuss" id="poemOption" value="소설/시">
+                <label for="poemOption">소설/시</label>
+              </div>
+              <div class="radioDiscuss">
+                <input type="radio" name="discuss" id="humanOption" value="인문">
+                <label for="humanOption">인문</label>
+              </div>
+              <div class="radioDiscuss">
+                <input type="radio" name="discuss" id="societyOption" value="사회">
+                <label for="societyOption">사회</label>
+              </div>
+              <div class="radioDiscuss">
+                <input type="radio" name="discuss" id="historyOption" value="역사">
+                <label for="historyOption">역사</label>
+              </div>
+              <div class="radioDiscuss">
+                <input type="radio" name="discuss" id="artOption" value="예술">
+                <label for="artOption">예술</label>
+              </div>
+              <div class="radioDiscuss">
+                <input type="radio" name="discuss" id="scienceOption" value="과학">
+                <label for="scienceOption">과학</label>
+              </div>
+              <div class="radioDiscuss">
+                <input type="radio" name="discuss" id="economyOption" value="경제 경영">
+                <label for="economyOption">경제 경영</label>
+              </div>
+            </div>
           </div>
-          <div class="radioDiscuss">
-            <input type="radio" name="discuss" id="artOption" value="art">
-            <label for="artOption">예술</label>
-          </div>
-          <div class="radioDiscuss">
-            <input type="radio" name="discuss" id="scienceOption" value="science">
-            <label for="scienceOption">과학</label>
-          </div>
-          <div class="radioDiscuss">
-            <input type="radio" name="discuss" id="economyOption" value="economy">
-            <label for="economyOption">경제 경영</label>
-          </div>
-        </div>
-      </div>
 
 
-      <div class="book-title">
-        <div class="divLeft">토론 키워드</div>
-        <div class="divRight">
-          <input placeholder="책과 해당 독서토론의 주제와 방향성을 #키워드로 적어주세요"></input>
-        </div>
-      </div>
+          <div class="book-title">
+            <div class="divLeft">토론 키워드</div>
+            <div class="divRight">
+              <input name="club_keywords" placeholder="책과 해당 독서토론의 주제와 방향성을 #키워드로 적어주세요"></input>
+            </div>
+          </div>
 
 
-      <div id="keyword">
-        <div class="divLeft" > 클럽 멤버수</div>
-        <div class="divRight">
-          <div>최소</div>
-          <input placeholder="N명(직접입력)"></input>
-          <div>부터 최대</div>
-          <input placeholder="N명(직접입력)"></input>
-          <div>까지</div>
-        </div>           
-      </div>
+          <div id="keyword">
+            <div class="divLeft" > 클럽 멤버수</div>
+            <div class="divRight">
+              <div>최소</div>
+              <input name="min_members" placeholder="N명(직접입력)"></input>
+              <div>부터 최대</div>
+              <input name="max_members" placeholder="N명(직접입력)"></input>
+              <div>까지</div>
+            </div>           
+          </div>
 
-      <div id="detail">
-        <div class="divLeft">상세내용</div>
-        <div class="divRight">
-          <textarea placeholder="독서클럽에서 진행하고 싶은 방향성 또는 발제문 같이 내가 나누고 싶은 이야기, 주제에 대해서 작성해주세요 (0/600자)"></textarea>
-        </div>
-      </div>
-    </section>
+          <div id="detail">
+            <div class="divLeft">상세내용</div>
+            <div class="divRight">
+              <textarea name="club_details" placeholder="독서클럽에서 진행하고 싶은 방향성 또는 발제문 같이 내가 나누고 싶은 이야기, 주제에 대해서 작성해주세요 (0/600자)"></textarea>
+            </div>
+          </div>
+        </section>
 
-    <section id="sec3">
-      <div>
-        <div id="cbtn1">업로드</div>
-        <div id="cbtn1">나가기</div>
-      </div>
-    </section>
+        <section id="sec3">
+          <div>
+            <button id="cbtn1" type="submit" onclick="location.href='/club/create'">업로드</button>
+            <div id="cbtn1" onclick="location.href='/club/main'">나가기</div>
+          </div>
+        </section>
+    </form>
 
     <script>
         includeHTML();
+
+        $(document).ready(function() {
+          $("#addPicture").click(function() {
+            $("#imageUpload").click();
+          });
+
+          $("#imageUpload").change(function() {
+            readURL(this);
+          });
+
+          $("#remove").click(function() {
+            $("#preview").attr("src", "");
+            $('#added').hide();
+            // Reset file input value to allow selecting the same file again
+            $("#imageUpload").val("");
+          });
+
+          function readURL(input) {
+            if (input.files && input.files[0]) {
+              var reader = new FileReader();
+
+              reader.onload = function(e) {
+                $("#preview").attr("src", e.target.result);
+                $('#added').show();
+              };
+
+              reader.readAsDataURL(input.files[0]);
+            }
+          }
+        });
+
+        $(document).ready(function() {
+          var timeBoxCount = $(".divSquare#time-box").length;
+          console.log(timeBoxCount)
+
+          $("#add-time-box").click(function() {
+            console.log(timeBoxCount)
+            if (timeBoxCount < 5) {
+              var clonedTimeBox = $("#time-box").clone();
+              clonedTimeBox.find("input, select").val(""); // Reset input/select values in cloned time-box
+              clonedTimeBox.find("#remove-btn").css("display", "inline-block");
+              clonedTimeBox.insertAfter("#time-box");
+
+              timeBoxCount++;
+
+              if (timeBoxCount >= 5) {
+                $("#add-time-box").hide();
+              }
+            }
+          });
+
+          // remove-btn 클릭 시 해당 time-box-item 삭제
+          $(document).on("click", "#remove-btn", function() {
+            console.log(timeBoxCount)
+            if (timeBoxCount >= 2) {
+              $(this).closest("#time-box").remove(); // 가장 가까운 상위 time-box-item 요소를 찾아 삭제
+
+              // 남은 time-box-item 개수 확인
+              timeBoxCount--;
+
+              // time-box-item 개수가 4개 이하면 add-time-box 보이기
+              if (timeBoxCount < 5) {
+                $("#add-time-box").show();
+              }
+            }
+          });
+        });
 
         const selects = document.querySelectorAll('select');
 

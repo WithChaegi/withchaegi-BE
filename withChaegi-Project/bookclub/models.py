@@ -12,7 +12,7 @@ import os
 # Create your models here.
 class BookClub(models.Model):
     group_name = models.CharField(verbose_name='모임명', max_length=30)
-    book_photo = models.ImageField(verbose_name='사진', upload_to='bookclub/', null=True, blank=True) # '/media/'+'bookclub/' # default='default_photo.png'
+    book_photo = models.ImageField(verbose_name='사진', upload_to='bookclub/', default='bookclub/dallergut.jfif', blank=True) # '/media/'+'bookclub/' # default='default_photo.png'
     book_title = models.CharField(verbose_name='책 제목', max_length=30)
     book_author = models.CharField(verbose_name='지은이', max_length=10)
     regularity = models.BooleanField(verbose_name='정기/비정기', default=False) # True(정기)/False(비정기)
@@ -21,6 +21,11 @@ class BookClub(models.Model):
     date3 = models.CharField(verbose_name='3회 날짜', max_length=20, blank=True)
     date4 = models.CharField(verbose_name='4회 날짜', max_length=20, blank=True)
     date5 = models.CharField(verbose_name='5회 날짜', max_length=20, blank=True)
+    weekday1 = models.CharField(verbose_name='1회 요일', max_length=3, blank=True)
+    weekday2 = models.CharField(verbose_name='2회 요일', max_length=3, blank=True)
+    weekday3 = models.CharField(verbose_name='3회 요일', max_length=3, blank=True)
+    weekday4 = models.CharField(verbose_name='4회 요일', max_length=3, blank=True)
+    weekday5 = models.CharField(verbose_name='5회 요일', max_length=3, blank=True)
     time = models.CharField(verbose_name='시간', max_length=20)
     city_location = models.CharField(verbose_name='장소(시/도)', max_length=10)
     district_location = models.CharField(verbose_name='장소(구/시/군)', max_length=10)
@@ -44,11 +49,8 @@ class BookClub(models.Model):
     #         filename = f"{self.id}.jfif"
     #         self.book_photo.name = filename
     #         # new_file_path = os.path.join(os.path.dirname(old_file_path), filename)
-    #         new_file_path = os.path.join('/static/img/', filename)
+    #         new_file_path = os.path.join('/media/bookclub/', filename)
     #         os.rename(old_file_path, new_file_path)
     #         self.save(update_fields=['book_photo'])
 
     #     super().save(*args, **kwargs)
-
-    def validate_member_num(num):
-        pass # applied_members가 max_members보다 큰지 판별하기 위해 사용할 예정

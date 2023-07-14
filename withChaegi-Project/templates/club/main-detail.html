@@ -5,11 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/static/css/main-detail.css">
     <link rel="stylesheet" href="/static/css/header.css">
     <link rel="stylesheet" href="/static/css/footer.css">
+    <script src="/static/js/includeHTML.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
@@ -21,7 +20,12 @@
     </section>
     <section id="sec2">
         <div class="divH">
-            <div class="cClub1"><img src="/media/bookclub/{{ club.club_id }}.jfif" alt="책 이미지"></div>
+            {% if club.book_photo %}
+                <img class="cClub1" src="/media/bookclub/{{ club.club_id }}.jfif" alt="책 이미지">
+            {% endif %}
+            {% if not club.book_photo %}
+                <img class="cClub1" src="/media/bookclub/0.jfif" alt="책 이미지">
+            {% endif %}
             <div class="cClub2" id="divClub1">
                 <div id="type">
                     <p>토론 분야</p>
@@ -60,13 +64,13 @@
                 </div>
                 <div>
                     <img src="/static/img/clock.png" alt="사람">
-                    <div style="display: flex; flex-direction: column; gap: 1.8vh;">
-                        <p class="pBlack1">{{club.date1}}(금), PM {{club.time}}</p>
-                        {% if club.date1 != '' %}<p class="pGray">1회차 {{club.date1}}(금)</p>{% endif %}
-                        {% if club.date2 != '' %}<p class="pGray">2회차 {{club.date2}}(금)</p>{% endif %}
-                        {% if club.date3 != '' %}<p class="pGray">3회차 {{club.date3}}(금)</p>{% endif %}
-                        {% if club.date4 != '' %}<p class="pGray">4회차 {{club.date4}}(금)</p>{% endif %}
-                        {% if club.date5 != '' %}<p class="pGray">5회차 {{club.date5}}(금)</p>{% endif %}
+                    <div style="display: flex; flex-direction: column; gap:1.8vh;">
+                        <p class="pBlack1">{{club.date1}}({{club.weekday1}}), PM {{club.time}}</p>
+                        {% if club.date1 != '' %}<p class="pGray">1회차 {{club.date1}}({{club.weekday1}})</p>{% endif %}
+                        {% if club.date2 != '' %}<p class="pGray">2회차 {{club.date2}}({{club.weekday2}})</p>{% endif %}
+                        {% if club.date3 != '' %}<p class="pGray">3회차 {{club.date3}}({{club.weekday3}})</p>{% endif %}
+                        {% if club.date4 != '' %}<p class="pGray">4회차 {{club.date4}}({{club.weekday4}})</p>{% endif %}
+                        {% if club.date5 != '' %}<p class="pGray">5회차 {{club.date5}}({{club.weekday5}})</p>{% endif %}
                     </div>
                 </div>
             </div>
@@ -85,6 +89,8 @@
         </div>
     </section>
     <script>
+        includeHTML();
+
         // 좋아요 버튼
         var like_status = false;
         let like_btn = $("#likeBtn");

@@ -49,26 +49,20 @@ body{
     width: 50vw;
     display: flex;
     flex-direction: row;
-    gap: 1vw;
+    justify-content: space-between;
     margin-bottom: 3vh;
 }
 
 .cClub1{
-    width: 22vw;
-    flex-shrink: 0;
+    width: 20vw;
     border-radius: 24px;
-    background: #fff;
+    background: #FFF;
     box-shadow: 0px 4px 40px 0px rgba(0, 0, 0, 0.10);
-    overflow: hidden;
 }
-.cClub1 > img{
-    width: 22vw;
-}
-
 .cClub2{
-    flex-grow: 1;
+    width: 24vw;
     border-radius: 24px;
-    background: #fff;
+    background: #FFF;
     box-shadow: 0px 4px 40px 0px rgba(0, 0, 0, 0.10);
     padding: 6vh 2vw 5vh 2.5vw ;
 }
@@ -78,7 +72,6 @@ body{
     font-weight: 500;
     margin-bottom: 1.4vh;
 }
-
 #type > div{
     display: flex;
     flex-direction: row;
@@ -120,6 +113,7 @@ body{
 }
 
 #divClub2{
+    width: 17vw;
     display: flex;
     flex-direction: column;
     padding: 6vh 1vw 1vh 2vw ;

@@ -21,31 +21,42 @@
         </div>
         <div class="cWidth" id="divBanner">
             <p style="text-align: center; font-size: 4rem; font-weight: 700; margin-top: 14vh;">내 주변 근처에서<br>독서 친구 만나보러 가요</p>
-            <div>독서클럽 만들기</div>
+            <div onclick="location.href='/club/create'">독서클럽 만들기</div>
         </div>
     </section>
     <section id="sec2">
         <div id="div1" style="display: flex; flex-direction: row;">
-            <div class="radioForm">
+            <div class="radioForm" onclick="location.href='/club/entirelist'">
                 <input type="radio" name="option" id="allOption" value="all" checked>
                 <label for="allOption">전체</label>
             </div>
-            <div class="radioForm">
+            <div class="radioForm" onclick="location.href='/club/popularlist'">
                 <input type="radio" name="option" id="popularOption" value="popular">
                 <label for="popularOption">인기</label>
             </div>
+            <script>
+                window.addEventListener('DOMContentLoaded', (event) => {
+                    if (window.location.href.includes('/club/popularlist')) {
+                        document.getElementById('popularOption').checked = true;
+                        $('.divOneBook').each(function(index) {
+                            $(this).find('#rank').text(index + 1);
+                            $(this).find('#rank').show();
+                        });
+                    }
+                });
+            </script>
         </div>
         <div id="div2" style="display: flex; flex-direction: row;">
             <div id="resetBtn"><img style="height: 10px; margin-right: 3px" src="/static/img/filter.svg" alt="필터">기본순</div>
             <select id="bookBtn">
                 <option value="none">책 선택</option>
-                <option value="1">소설/시</option>
-                <option value="2">인문</option>
-                <option value="3">사회</option>
-                <option value="4">역사</option>
-                <option value="5">예술</option>
-                <option value="6">과학</option>
-                <option value="7">경제 경영</option>
+                <option value="소설/시">소설/시</option>
+                <option value="인문">인문</option>
+                <option value="사회">사회</option>
+                <option value="역사">역사</option>
+                <option value="예술">예술</option>
+                <option value="과학">과학</option>
+                <option value="경제 경영">경제 경영</option>
             </select>
             <select id="peopleBtn">
                 <option value="none">인원</option>
@@ -64,30 +75,32 @@
             </select>
         </div>
 
-    {% widthratio clubs|length 4 1 as range %}
-    {% for i in "x"|rjust:range %}
-    <p>{{ range }}</p> <!-- i 값을 출력하여 확인 -->
+    {% for club_group in clubs %}
         <div id="divBooksH">
-            {% widthratio i 1 4 as start %}
-            {% with end=start|add:4 %}
-                    {% for club in clubs|slice:"start:end" %}
-                        <div class="divOneBook default" onclick="location.href='/club/{{ club.club_id }}'">
-                            <div id="divBookMap1">
-                                <img id="book" src="/media/bookclub/{{ club.club_id }}.jfif" alt="">
-                                <img id="like" src="/static/img/likeEmpty.svg" alt="하트">
-                                <div id="rank">1</div>
-                            </div>
-                            <div id="divBookMap2">
-                                <p id="title">{{ club.book_title }}</p>
-                                <div id="divPlaceDate">
-                                    <div id="place">{{ club.district_location }}</div>
-                                    <div id="date">{{ club.date1 }}</div>
-                                </div>
-                                <p id="info">첫 모임 {{ club.date1 }}(목) {{ club.time }}</p>
-                            </div>
+            {% for club in club_group %}
+                <div class="divOneBook default" onclick="location.href='/club/{{ club.club_id }}'">
+                    <div id="divBookMap1">
+                        {% if club.book_photo %}
+                            <img id="book" src="/media/bookclub/{{ club.club_id }}.jfif" alt="">
+                        {% endif %}
+                        {% if not club.book_photo %}
+                        <img id="book" src="/media/bookclub/0.jfif" alt="">
+                        {% endif %}
+                        <img id="like" src="/static/img/likeEmpty.svg" alt="하트">
+                        {% if request.path == '/club/popularlist' %}
+                            <div id="rank">{{ forloop.counter }}</div>
+                        {% endif %}
+                    </div>
+                    <div id="divBookMap2">
+                        <p id="title">{{ club.book_title }}</p>
+                        <div id="divPlaceDate">
+                            <div id="place">{{ club.dong_location }}</div>
+                            <div id="date">{{ club.date1 }}</div>
                         </div>
-                    {% endfor %}
-            {% endwith %}
+                        <p id="info">첫 모임 {{ club.date1 }}({{club.weekday1}}) {{ club.time }}</p>
+                    </div>
+                </div>
+            {% endfor %}
         </div>
     {% endfor %}
 
