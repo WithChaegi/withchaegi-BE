@@ -21,7 +21,7 @@
         <div id="review-box">
 
     
-            <img id="review-img" src="{{ essay.book_photo }}">
+            <img id="review-img" src="{{ essay.book_photo.url }}">
             <div>
                 <div id="review-text1">{{ essay.essay_title }}</div>
                 <div id="review-text2">{{ essay.book_title }} / {{ essay.book_author}}</div>
@@ -41,12 +41,14 @@
     
     <section id="sec3">
         <div id="comment">댓글</div>
-
+        <form  method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
         <div id="comment-write">
             <img id="cuser1" src="/static/img/img3/user2.png">
-            <textarea placeholder="해당 게시물에 대한 00님의 생각을 적어주세요. 책에 대해 서로의 생각을 주고받는 건 곧 나의 세계를 확장하는 거니까요!"></textarea>
-            <div id="cbtn1">등록</div>
+            <textarea name="comment_content" placeholder="해당 게시물에 대한 00님의 생각을 적어주세요. 책에 대해 서로의 생각을 주고받는 건 곧 나의 세계를 확장하는 거니까요!"></textarea>
+            <div id="cbtn1" type="submit">등록</div>
         </div>
+        </form>
         
         <hr>
         {% for comment in essay.comment_set.all%}

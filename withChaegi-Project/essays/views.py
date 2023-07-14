@@ -2,9 +2,14 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse, JsonResponse
 from django.views.generic.list import ListView
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib import auth
+from django.views.decorators.http import require_POST
+from django.shortcuts import render, get_object_or_404
 
 from .models import Essay
 from .models import Comment
+from .forms import CommentForm
 
 def main(request):
     essay_popularlist = Essay.objects.all().order_by('-created_at')[:3] # 최신순 정렬
@@ -59,6 +64,17 @@ def essay_detail_view(request, id):
         essay = Essay.objects.get(id=id)
     except Essay.DoesNotExist:
         return redirect('main')
+    
+    # if request.method == 'POST':
+    #     comment_content = request.POST.get('comment_content')
+        
+    
+    #     Comment.objects.create(
+    #         comment_content=comment_content,
+    #         writer=request.user
+    #     )
+    #     #return redirect('main')
+
     # comment_list = Comment.objects.all().order_by('-created_at') # 최신순 정렬
     # comment = Comment.objects.all().get(essay=id)
     context = {
@@ -116,6 +132,21 @@ def function_view(request):
     elif request.method == 'POST':
         print(f'request.POST: {request.POST}')
     return render(request, 'view.html')
+
+
+@require_POST
+def comment_create_view(request, id):
+    essay = Essay.objects.get(id=id)
+    comment_form = CommentForm(request.POST)
+    if comment_form.is_valid():
+        comment = comment_form.save(commit=False)
+        comment.essay = essay
+        comment.user = request.user
+        comment.save()
+    return redirect('essays:detail', essay.id)
+
+
+
 
 class class_view(ListView):
     model = Essay
